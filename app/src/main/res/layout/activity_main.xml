@@ -1,62 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <GridLayout
+    <GridView
         android:id="@+id/gl_matrix_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:rowCount="3"
-        android:columnCount="3"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        android:layout_marginStart="@dimen/dp_64"
+        android:layout_marginEnd="@dimen/dp_64"
+        android:layout_marginTop="@dimen/dp_80"
+        android:gravity="center"
+        android:columnWidth="@dimen/dp_80"
+        android:numColumns="3"
+        android:verticalSpacing="@dimen/dp_8"
+        android:horizontalSpacing="@dimen/dp_8"
+        android:stretchMode="spacingWidthUniform" />
 
-        <TextView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:text="1"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_columnSpan="3"
-            android:layout_rowSpan="3" />
-
-        <TextView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:text="1"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_columnSpan="3"
-            android:layout_rowSpan="3" />
-
-        <TextView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:text="1"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_columnSpan="3"
-            android:layout_rowSpan="3" />
-
-        <TextView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:text="1"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_columnSpan="3"
-            android:layout_rowSpan="3" />
-
-    </GridLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
