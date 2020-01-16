@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         fixedNo.add(8)
         fixedNo.add(9)
 
-
         val adapter = GridViewAdapter(this@MainActivity, fixedNo, randomNo)
         gl_matrix_layout.adapter = adapter
     }
