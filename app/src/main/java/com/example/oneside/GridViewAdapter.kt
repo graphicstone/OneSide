@@ -20,33 +20,20 @@ class GridViewAdapter(private var context: Context, private var fixedNo: ArrayLi
         val holder: ViewHolder
 
         if (myView == null) {
-            //If our View is Null than we Inflater view using Layout Inflater
             val mInflater = (context as Activity).layoutInflater
             myView = mInflater.inflate(R.layout.item_unit_cell, parent, false)
 
-            //Create Object of ViewHolder Class and set our View to it
             holder = ViewHolder()
-
-            //Find view By Id For all our Widget taken in grid_item.
-
-            /*Here !! are use for non-null asserted two prevent From null.
-             you can also use Only Safe (?.)
-
-            */
-
 
             holder.mFixedNo = myView.findViewById(R.id.tv_fixed_no) as TextView
             holder.mRandomNo = myView.findViewById(R.id.tv_random_no) as TextView
 
-            //Set A Tag to Identify our view.
             myView.tag = holder
         }
         else {
-            //If Our View in not Null than Just get View using Tag and pass to holder Object.
             holder = myView.tag as ViewHolder
         }
 
-        //Setting Image to ImageView by position
         holder.mRandomNo?.text = randomNo[position].toString()
         holder.mFixedNo?.text = fixedNo[position].toString()
 

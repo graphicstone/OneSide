@@ -9,6 +9,8 @@ class MainActivity : AppCompatActivity() {
 
     private val randomArray = ArrayList<Int>()
     private val fixedArray = ArrayList<Int>()
+    private val swapSiteArray = ArrayList<Int>()
+    private val swapDirectionArray = ArrayList<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,13 +27,24 @@ class MainActivity : AppCompatActivity() {
         }
 
         val outerLoopRandomNo = (4..7).random()
-        for (i in 0..outerLoopRandomNo)
-            for (j in 0..2)
+        for (i in 0..outerLoopRandomNo) {
+            for (j in 0..2) {
                 for (k in 0..2) {
-                    val swapSite = (0..3).random()
+                    var swapSite = (0..3).random()
                     val swapDirection = (0..1).random()
+                    if(swapSite == 2 || swapSite == 3)
+                        swapSite += 1
+                    swapSiteArray.add(swapSite)
+                    swapDirectionArray.add(swapDirection)
                     rotateGrid(swapSite, swapDirection)
                 }
+            }
+        }
+
+        for(i in swapSiteArray)
+            Log.i("SwapSite", swapSiteArray[i].toString())
+        for(i in swapDirectionArray)
+            Log.i("SwapDirection", swapDirectionArray[i].toString())
 
         val adapter = GridViewAdapter(this@MainActivity, fixedArray, randomArray)
         gl_matrix_layout.adapter = adapter
@@ -49,8 +62,5 @@ class MainActivity : AppCompatActivity() {
 
     private fun swapNumbers(i: Int, j: Int) {
         randomArray[i]=randomArray[j].also { randomArray[j]  = randomArray[i]}
-        Log.i("Position1:", randomArray[0].toString()+randomArray[1].toString()+randomArray[2])
-        Log.i("Position2:", randomArray[3].toString()+randomArray[4].toString()+randomArray[5])
-        Log.i("Position3:", randomArray[6].toString()+randomArray[7].toString()+randomArray[8])
     }
 }
