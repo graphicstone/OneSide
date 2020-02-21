@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".MainActivity">
+    tools:context=".ui.home.HomeActivity">
 
     <TextView
         android:id="@+id/tv_app_name"
@@ -12,11 +12,11 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/dp_8"
         android:text="@string/app_name"
-        android:textStyle="bold"
-        android:textSize="@dimen/sp_32"
         android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/sp_32"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -33,8 +33,8 @@
         android:id="@+id/civ_2_btn"
         android:layout_width="@dimen/dp_48"
         android:layout_height="@dimen/dp_48"
-        android:layout_marginEnd="@dimen/dp_120"
         android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_120"
         android:src="@drawable/ic_swap_vertical_circle_black_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_app_name" />
@@ -63,8 +63,8 @@
         android:id="@+id/civ_3_btn"
         android:layout_width="@dimen/dp_48"
         android:layout_height="@dimen/dp_48"
-        android:layout_marginEnd="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_120"
+        android:layout_marginEnd="@dimen/dp_16"
         android:src="@drawable/ic_swap_vertical_circle_black_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_app_name" />
@@ -73,8 +73,8 @@
         android:id="@+id/civ_4_btn"
         android:layout_width="@dimen/dp_48"
         android:layout_height="@dimen/dp_48"
-        android:layout_marginEnd="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_48"
+        android:layout_marginEnd="@dimen/dp_16"
         android:src="@drawable/ic_swap_vertical_circle_black_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/civ_3_btn" />
@@ -83,27 +83,27 @@
         android:id="@+id/rl_matrix"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_16"
         android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
         android:layout_marginEnd="@dimen/dp_16"
-        app:layout_constraintStart_toEndOf="@id/civ_8_btn"
         app:layout_constraintEnd_toStartOf="@id/civ_3_btn"
-        app:layout_constraintTop_toBottomOf="@id/civ_1_btn" >
+        app:layout_constraintStart_toEndOf="@id/civ_8_btn"
+        app:layout_constraintTop_toBottomOf="@id/civ_1_btn">
 
         <GridView
             android:id="@+id/gl_matrix_layout"
             android:layout_width="224dp"
             android:layout_height="wrap_content"
             android:columnWidth="@dimen/dp_64"
-            android:numColumns="3"
-            android:verticalSpacing="@dimen/dp_16"
             android:horizontalSpacing="@dimen/dp_16"
-            android:stretchMode="none" />
+            android:numColumns="3"
+            android:stretchMode="none"
+            android:verticalSpacing="@dimen/dp_16" />
 
     </RelativeLayout>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_5_btn"
+        android:id="@+id/civ_6_btn"
         android:layout_width="@dimen/dp_48"
         android:layout_height="@dimen/dp_48"
         android:layout_marginStart="@dimen/dp_120"
@@ -113,11 +113,11 @@
         app:layout_constraintTop_toBottomOf="@id/rl_matrix" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_6_btn"
+        android:id="@+id/civ_5_btn"
         android:layout_width="@dimen/dp_48"
         android:layout_height="@dimen/dp_48"
-        android:layout_marginEnd="@dimen/dp_120"
         android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_120"
         android:src="@drawable/ic_swap_vertical_circle_black_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rl_matrix" />

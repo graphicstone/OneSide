@@ -1,4 +1,4 @@
-package com.example.oneside
+package com.example.oneside.adapter
 
 import android.app.Activity
 import android.content.Context
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.example.oneside.R
 
 class GridViewAdapter(private var context: Context, private var fixedNo: ArrayList<Int>, private var randomNo: ArrayList<Int>) : BaseAdapter() {
 
