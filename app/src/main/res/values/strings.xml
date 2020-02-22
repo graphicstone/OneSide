@@ -3,4 +3,8 @@
     <string name="_1">1</string>
     <string name="complete">Complete</string>
     <string name="show_solution">Show Solution</string>
+    <string name="easy">Easy</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
+    <string name="no_of_steps">No of steps</string>
 </resources>

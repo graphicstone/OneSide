@@ -1,4 +1,4 @@
-package com.example.oneside.ui.solution
+package com.example.oneside.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.oneside.R
 import com.example.oneside.adapter.GridViewAdapter
-import kotlinx.android.synthetic.main.activity_solution_activity.*
+import kotlinx.android.synthetic.main.activity_solution.*
 
 class SolutionActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -21,7 +21,7 @@ class SolutionActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_solution_activity)
+        setContentView(R.layout.activity_solution)
 
         supportActionBar?.hide()
         for (i in 1..9)
@@ -31,8 +31,8 @@ class SolutionActivity : AppCompatActivity(), View.OnClickListener {
         swapDirection = intent.getIntegerArrayListExtra("SwapDirection")
         randomArray = intent.getIntegerArrayListExtra("RandomArray")
 
-        Log.i("SwapSite", swapSite.toString())
-        Log.i("SwapSite", swapDirection.toString())
+        val steps = "0/"+swapSite.size
+        tv_no_of_steps.text = steps
 
         adapter = GridViewAdapter(this, fixedArray, randomArray)
         gv_solution_grid.adapter = adapter as GridViewAdapter
@@ -45,6 +45,8 @@ class SolutionActivity : AppCompatActivity(), View.OnClickListener {
         if (view == civ_prev_btn) {
             if (position > 0) {
                 position--
+                val steps: String = (position+1).toString() + "/" + swapSite.size
+                tv_no_of_steps.text = steps
                 when (swapSite[position]) {
                     0 -> {
                         if (swapDirection[position] == 0) {
@@ -87,6 +89,8 @@ class SolutionActivity : AppCompatActivity(), View.OnClickListener {
                 Toast.makeText(this, "First position", Toast.LENGTH_SHORT).show()
         } else if (view == civ_next_btn) {
             if (position < swapSite.size) {
+                val steps: String = (position+1).toString() + "/" + swapSite.size
+                tv_no_of_steps.text = steps
                 when (swapSite[position]) {
                     0 -> {
                         if (swapDirection[position] == 0) {

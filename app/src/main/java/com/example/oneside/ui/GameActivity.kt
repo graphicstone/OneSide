@@ -1,4 +1,4 @@
-package com.example.oneside.ui.home
+package com.example.oneside.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,36 +8,38 @@ import android.widget.Adapter
 import androidx.appcompat.app.AppCompatActivity
 import com.example.oneside.R
 import com.example.oneside.adapter.GridViewAdapter
-import com.example.oneside.ui.solution.SolutionActivity
-import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_game.*
 
-class HomeActivity : AppCompatActivity(), View.OnClickListener {
+class GameActivity : AppCompatActivity(), View.OnClickListener {
 
     private val randomArray = ArrayList<Int>()
     private val fixedArray = ArrayList<Int>()
     private val swapSiteArray = ArrayList<Int>()
     private val swapDirectionArray = ArrayList<Int>()
     private var adapter: Adapter? = null
+    private var randomNumber: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_game)
 
         if (supportActionBar != null)
             supportActionBar?.hide()
 
-        for (i in 1..9) {
+        val level = intent.getStringExtra("Level")
+
+        for (i in 1..9)
             randomArray.add(i)
-        }
-        for (i in 1..9) {
+        for (i in 1..9)
             fixedArray.add(i)
+
+        when (level) {
+            "Easy" -> randomNumber = (0..1).random()
+            "Medium" -> randomNumber = (2..4).random()
+            "Hard" -> randomNumber = (5..7).random()
         }
 
-        val level1 = 1
-        val level2 = (2..4).random()
-        val level3 = (5..7).random()
-
-        for (i in 0..level2) {
+        for (i in 0..randomNumber) {
             for (j in 0..2) {
                 for (k in 0..2) {
                     var swapSite = (0..3).random()
@@ -57,7 +59,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
             Log.i("SwapDirection", swapDirectionArray[i].toString())
 
         adapter = GridViewAdapter(
-            this@HomeActivity,
+            this@GameActivity,
             fixedArray,
             randomArray
         )
