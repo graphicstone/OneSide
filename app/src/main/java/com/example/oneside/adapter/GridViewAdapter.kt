@@ -8,7 +8,11 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.oneside.R
 
-class GridViewAdapter(private var context: Context, private var fixedNo: ArrayList<Int>, private var randomNo: ArrayList<Int>) : BaseAdapter() {
+class GridViewAdapter(
+    private var context: Context,
+    private var fixedNo: ArrayList<Int>,
+    private var randomNo: ArrayList<Int>
+) : BaseAdapter() {
 
     private val list = numberArray()
 
@@ -30,8 +34,7 @@ class GridViewAdapter(private var context: Context, private var fixedNo: ArrayLi
             holder.mRandomNo = myView.findViewById(R.id.tv_random_no) as TextView
 
             myView.tag = holder
-        }
-        else {
+        } else {
             holder = myView.tag as ViewHolder
         }
 

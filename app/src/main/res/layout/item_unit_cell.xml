@@ -21,6 +21,7 @@
         android:id="@+id/tv_random_no"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:background="@drawable/curve_boundary"
         android:text="@string/_1"
         android:textStyle="bold"
         android:textSize="16sp"

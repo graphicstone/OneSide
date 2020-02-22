@@ -25,7 +25,7 @@
         android:layout_height="@dimen/dp_48"
         android:layout_marginStart="@dimen/dp_120"
         android:layout_marginTop="@dimen/dp_16"
-        android:src="@drawable/ic_swap_vertical_circle_black_24dp"
+        android:src="@drawable/ic_horizontal_swap"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_app_name" />
 
@@ -35,7 +35,7 @@
         android:layout_height="@dimen/dp_48"
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginEnd="@dimen/dp_120"
-        android:src="@drawable/ic_swap_vertical_circle_black_24dp"
+        android:src="@drawable/ic_horizontal_swap"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_app_name" />
 
@@ -45,7 +45,7 @@
         android:layout_height="@dimen/dp_48"
         android:layout_marginStart="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_120"
-        android:src="@drawable/ic_swap_vertical_circle_black_24dp"
+        android:src="@drawable/ic_vertical_swap"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_app_name" />
 
@@ -55,7 +55,7 @@
         android:layout_height="@dimen/dp_48"
         android:layout_marginStart="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_48"
-        android:src="@drawable/ic_swap_vertical_circle_black_24dp"
+        android:src="@drawable/ic_vertical_swap"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/civ_8_btn" />
 
@@ -65,7 +65,7 @@
         android:layout_height="@dimen/dp_48"
         android:layout_marginTop="@dimen/dp_120"
         android:layout_marginEnd="@dimen/dp_16"
-        android:src="@drawable/ic_swap_vertical_circle_black_24dp"
+        android:src="@drawable/ic_vertical_swap"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_app_name" />
 
@@ -75,7 +75,7 @@
         android:layout_height="@dimen/dp_48"
         android:layout_marginTop="@dimen/dp_48"
         android:layout_marginEnd="@dimen/dp_16"
-        android:src="@drawable/ic_swap_vertical_circle_black_24dp"
+        android:src="@drawable/ic_vertical_swap"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/civ_3_btn" />
 
@@ -91,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@id/civ_1_btn">
 
         <GridView
-            android:id="@+id/gl_matrix_layout"
+            android:id="@+id/gv_matrix_layout"
             android:layout_width="224dp"
             android:layout_height="wrap_content"
             android:columnWidth="@dimen/dp_64"
@@ -108,7 +108,7 @@
         android:layout_height="@dimen/dp_48"
         android:layout_marginStart="@dimen/dp_120"
         android:layout_marginTop="@dimen/dp_16"
-        android:src="@drawable/ic_swap_vertical_circle_black_24dp"
+        android:src="@drawable/ic_horizontal_swap"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rl_matrix" />
 
@@ -118,8 +118,20 @@
         android:layout_height="@dimen/dp_48"
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginEnd="@dimen/dp_120"
-        android:src="@drawable/ic_swap_vertical_circle_black_24dp"
+        android:src="@drawable/ic_horizontal_swap"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rl_matrix" />
+
+    <Button
+        android:id="@+id/btn_solution"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/show_solution"
+        android:textSize="@dimen/sp_16"
+        android:background="@drawable/light_outline_bgn"
+        android:layout_margin="@dimen/dp_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

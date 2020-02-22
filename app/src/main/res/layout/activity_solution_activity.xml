@@ -3,6 +3,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.solution.SolutionActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.solution.SolutionActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/civ_prev_btn"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginStart="@dimen/dp_16"
+        android:src="@drawable/ic_prev"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/rl_matrix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        app:layout_constraintEnd_toStartOf="@id/civ_next_btn"
+        app:layout_constraintStart_toEndOf="@id/civ_prev_btn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <GridView
+            android:id="@+id/gv_solution_grid"
+            android:layout_width="224dp"
+            android:layout_height="wrap_content"
+            android:columnWidth="@dimen/dp_64"
+            android:horizontalSpacing="@dimen/dp_16"
+            android:numColumns="3"
+            android:stretchMode="none"
+            android:verticalSpacing="@dimen/dp_16" />
+
+    </RelativeLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/civ_next_btn"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:src="@drawable/ic_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

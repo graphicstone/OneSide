@@ -2,4 +2,5 @@
     <string name="app_name">OneSide</string>
     <string name="_1">1</string>
     <string name="complete">Complete</string>
+    <string name="show_solution">Show Solution</string>
 </resources>

@@ -1,12 +1,14 @@
 package com.example.oneside.ui.home
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Adapter
-import com.example.oneside.adapter.GridViewAdapter
+import androidx.appcompat.app.AppCompatActivity
 import com.example.oneside.R
+import com.example.oneside.adapter.GridViewAdapter
+import com.example.oneside.ui.solution.SolutionActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity(), View.OnClickListener {
@@ -31,13 +33,16 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
             fixedArray.add(i)
         }
 
-        val outerLoopRandomNo = (4..7).random()
-        for (i in 0..outerLoopRandomNo) {
+        val level1 = 1
+        val level2 = (2..4).random()
+        val level3 = (5..7).random()
+
+        for (i in 0..level2) {
             for (j in 0..2) {
                 for (k in 0..2) {
                     var swapSite = (0..3).random()
                     val swapDirection = (0..1).random()
-                    if(swapSite == 2 || swapSite == 3)
+                    if (swapSite == 2 || swapSite == 3)
                         swapSite += 1
                     swapSiteArray.add(swapSite)
                     swapDirectionArray.add(swapDirection)
@@ -46,9 +51,9 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
 
-        for(i in swapSiteArray)
+        for (i in swapSiteArray)
             Log.i("SwapSite", swapSiteArray[i].toString())
-        for(i in swapDirectionArray)
+        for (i in swapDirectionArray)
             Log.i("SwapDirection", swapDirectionArray[i].toString())
 
         adapter = GridViewAdapter(
@@ -56,7 +61,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
             fixedArray,
             randomArray
         )
-        gl_matrix_layout.adapter = adapter as GridViewAdapter
+        gv_matrix_layout.adapter = adapter as GridViewAdapter
 
         civ_1_btn.setOnClickListener(this)
         civ_2_btn.setOnClickListener(this)
@@ -66,6 +71,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         civ_6_btn.setOnClickListener(this)
         civ_7_btn.setOnClickListener(this)
         civ_8_btn.setOnClickListener(this)
+        btn_solution.setOnClickListener(this)
     }
 
     private fun rotateGrid(swapSite: Int, swapDirection: Int, array: Boolean) {
@@ -79,10 +85,10 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun swapNumbers(i: Int, j: Int, array: Boolean) {
-        if(array)
-            fixedArray[i]=fixedArray[j].also { fixedArray[j]  = fixedArray[i]}
+        if (array)
+            fixedArray[i] = fixedArray[j].also { fixedArray[j] = fixedArray[i] }
         else
-            randomArray[i]=randomArray[j].also { randomArray[j]  = randomArray[i]}
+            randomArray[i] = randomArray[j].also { randomArray[j] = randomArray[i] }
     }
 
     override fun onClick(view: View?) {
@@ -118,6 +124,13 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
             civ_8_btn -> {
                 rotateGrid(0, 0, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
+            }
+            btn_solution -> {
+                val intent = Intent(this, SolutionActivity::class.java)
+                intent.putExtra("SwapSite", swapSiteArray)
+                intent.putExtra("SwapDirection", swapDirectionArray)
+                intent.putExtra("RandomArray", randomArray)
+                startActivity(intent)
             }
         }
     }
