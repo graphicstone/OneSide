@@ -7,4 +7,5 @@
     <string name="medium">Medium</string>
     <string name="hard">Hard</string>
     <string name="no_of_steps">No of steps</string>
+    <string name="prefernce_file_key">PREFERENCE_FILE_KEY</string>
 </resources>

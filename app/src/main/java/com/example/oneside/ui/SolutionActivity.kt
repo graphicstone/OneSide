@@ -1,7 +1,8 @@
 package com.example.oneside.ui
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Adapter
 import android.widget.Toast
@@ -18,20 +19,28 @@ class SolutionActivity : AppCompatActivity(), View.OnClickListener {
     private var swapDirection = ArrayList<Int>()
     private var adapter: Adapter? = null
     private var position: Int = 0
+    private var sharedSiteArray: String? = null
+    private var sharedDirectionArray: String? = null
+    private var sharedRandomArray: String? = null
+    private val preferenceKey = "PREFERENCE_FILE_KEY"
+    private var sharedPreferences: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_solution)
 
         supportActionBar?.hide()
+
+        sharedPreferences = this.getSharedPreferences(preferenceKey, Context.MODE_PRIVATE)
+
         for (i in 1..9)
             fixedArray.add(i)
 
-        swapSite = intent.getIntegerArrayListExtra("SwapSite")
-        swapDirection = intent.getIntegerArrayListExtra("SwapDirection")
-        randomArray = intent.getIntegerArrayListExtra("RandomArray")
+        getRandomArray()
+        getSiteArray()
+        getDirectionArray()
 
-        val steps = "0/"+swapSite.size
+        val steps = "0/" + swapSite.size
         tv_no_of_steps.text = steps
 
         adapter = GridViewAdapter(this, fixedArray, randomArray)
@@ -41,93 +50,64 @@ class SolutionActivity : AppCompatActivity(), View.OnClickListener {
         civ_next_btn.setOnClickListener(this)
     }
 
+    private fun getRandomArray() {
+        sharedRandomArray = sharedPreferences?.getString(
+            "RandomArray",
+            "DEFAULT_STRING"
+        )!!.replace("[^0-9]".toRegex(), "")
+        for (i in sharedRandomArray!!.indices)
+            randomArray.add(sharedRandomArray!![i].toString().toInt())
+    }
+
+    private fun getDirectionArray() {
+        sharedDirectionArray = sharedPreferences?.getString(
+            "SwapDirectionArray",
+            "DEFAULT_STRING"
+        )!!.replace("[^0-9]".toRegex(), "")
+        for (i in sharedDirectionArray!!.indices)
+            swapDirection.add(sharedDirectionArray!![i].toString().toInt())
+    }
+
+    private fun getSiteArray() {
+        sharedSiteArray = sharedPreferences!!.getString(
+            "SwapSiteArray",
+            "DEFAULT_STRING"
+        )!!.replace("[^0-9]".toRegex(), "")
+        for (i in sharedSiteArray!!.indices)
+            swapSite.add(sharedSiteArray!![i].toString().toInt())
+    }
+
     override fun onClick(view: View?) {
         if (view == civ_prev_btn) {
             if (position > 0) {
                 position--
-                val steps: String = (position+1).toString() + "/" + swapSite.size
+                val steps: String = (position + 1).toString() + "/" + swapSite.size
                 tv_no_of_steps.text = steps
                 when (swapSite[position]) {
-                    0 -> {
-                        if (swapDirection[position] == 0) {
-                            rotateGrid(0, 0, true)
-                            (adapter as GridViewAdapter).notifyDataSetChanged()
-                        } else if (swapDirection[position] == 1) {
-                            rotateGrid(0, 1, true)
-                            (adapter as GridViewAdapter).notifyDataSetChanged()
-                        }
-                    }
-                    1 -> {
-                        if (swapDirection[position] == 0) {
-                            rotateGrid(1, 0, true)
-                            (adapter as GridViewAdapter).notifyDataSetChanged()
-                        } else if (swapDirection[position] == 1) {
-                            rotateGrid(1, 1, true)
-                            (adapter as GridViewAdapter).notifyDataSetChanged()
-                        }
-                    }
-                    3 -> {
-                        if (swapDirection[position] == 0) {
-                            rotateGrid(3, 0, true)
-                            (adapter as GridViewAdapter).notifyDataSetChanged()
-                        } else if (swapDirection[position] == 1) {
-                            rotateGrid(3, 1, true)
-                            (adapter as GridViewAdapter).notifyDataSetChanged()
-                        }
-                    }
-                    4 -> {
-                        if (swapDirection[position] == 0) {
-                            rotateGrid(4, 0, true)
-                            (adapter as GridViewAdapter).notifyDataSetChanged()
-                        } else if (swapDirection[position] == 1) {
-                            rotateGrid(4, 1, true)
-                            (adapter as GridViewAdapter).notifyDataSetChanged()
-                        }
-                    }
+                    0 ->
+                        showSolution(0)
+                    1 ->
+                        showSolution(1)
+                    3 ->
+                        showSolution(3)
+                    4 ->
+                        showSolution(4)
                 }
             } else
                 Toast.makeText(this, "First position", Toast.LENGTH_SHORT).show()
         } else if (view == civ_next_btn) {
             if (position < swapSite.size) {
-                val steps: String = (position+1).toString() + "/" + swapSite.size
+                val steps: String = (position + 1).toString() + "/" + swapSite.size
                 tv_no_of_steps.text = steps
                 when (swapSite[position]) {
-                    0 -> {
-                        if (swapDirection[position] == 0) {
-                            rotateGrid(0, 0, true)
-                            (adapter as GridViewAdapter).notifyDataSetChanged()
-                        } else if (swapDirection[position] == 1) {
-                            rotateGrid(0, 1, true)
-                            (adapter as GridViewAdapter).notifyDataSetChanged()
-                        }
-                    }
-                    1 -> {
-                        if (swapDirection[position] == 0) {
-                            rotateGrid(1, 0, true)
-                            (adapter as GridViewAdapter).notifyDataSetChanged()
-                        } else if (swapDirection[position] == 1) {
-                            rotateGrid(1, 1, true)
-                            (adapter as GridViewAdapter).notifyDataSetChanged()
-                        }
-                    }
-                    3 -> {
-                        if (swapDirection[position] == 0) {
-                            rotateGrid(3, 0, true)
-                            (adapter as GridViewAdapter).notifyDataSetChanged()
-                        } else if (swapDirection[position] == 1) {
-                            rotateGrid(3, 1, true)
-                            (adapter as GridViewAdapter).notifyDataSetChanged()
-                        }
-                    }
-                    4 -> {
-                        if (swapDirection[position] == 0) {
-                            rotateGrid(4, 0, true)
-                            (adapter as GridViewAdapter).notifyDataSetChanged()
-                        } else if (swapDirection[position] == 1) {
-                            rotateGrid(4, 1, true)
-                            (adapter as GridViewAdapter).notifyDataSetChanged()
-                        }
-                    }
+                    0 ->
+                        showSolution(0)
+                    1 ->
+                        showSolution(1)
+                    3 ->
+                        showSolution(3)
+                    4 ->
+                        showSolution(4)
                 }
                 position++
             } else
@@ -135,20 +115,27 @@ class SolutionActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun rotateGrid(swapSite: Int, swapDirection: Int, array: Boolean) {
-        if (swapDirection == 0) {
-            swapNumbers(swapSite, swapSite + 3, array)
-            swapNumbers(swapSite + 4, swapSite + 1, array)
-        } else {
-            swapNumbers(swapSite, swapSite + 1, array)
-            swapNumbers(swapSite + 4, swapSite + 3, array)
+    private fun showSolution(i: Int) {
+        if (swapDirection[position] == 0) {
+            rotateGrid(i, 0)
+            (adapter as GridViewAdapter).notifyDataSetChanged()
+        } else if (swapDirection[position] == 1) {
+            rotateGrid(i, 1)
+            (adapter as GridViewAdapter).notifyDataSetChanged()
         }
     }
 
-    private fun swapNumbers(i: Int, j: Int, array: Boolean) {
-        if (array)
-            fixedArray[i] = fixedArray[j].also { fixedArray[j] = fixedArray[i] }
-        else
-            randomArray[i] = randomArray[j].also { randomArray[j] = randomArray[i] }
+    private fun rotateGrid(swapSite: Int, swapDirection: Int) {
+        if (swapDirection == 0) {
+            swapNumbers(swapSite, swapSite + 3)
+            swapNumbers(swapSite + 4, swapSite + 1)
+        } else {
+            swapNumbers(swapSite, swapSite + 1)
+            swapNumbers(swapSite + 4, swapSite + 3)
+        }
+    }
+
+    private fun swapNumbers(i: Int, j: Int) {
+        fixedArray[i] = fixedArray[j].also { fixedArray[j] = fixedArray[i] }
     }
 }

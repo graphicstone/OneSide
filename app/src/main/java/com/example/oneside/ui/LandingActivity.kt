@@ -1,6 +1,8 @@
 package com.example.oneside.ui
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,9 +11,15 @@ import kotlinx.android.synthetic.main.activity_landing.*
 
 class LandingActivity : AppCompatActivity(), View.OnClickListener {
 
+    private var sharedPreferences: SharedPreferences? = null
+    private var editor: SharedPreferences.Editor? = null
+    private val preferenceKey = "PREFERENCE_FILE_KEY"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing)
+
+        sharedPreferences = this.getSharedPreferences(preferenceKey, Context.MODE_PRIVATE)
 
         supportActionBar?.hide()
 
@@ -22,21 +30,21 @@ class LandingActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         when(view) {
-            btn_easy -> {
-                val intent = Intent(this, GameActivity::class.java)
-                intent.putExtra("Level", "Easy")
-                startActivity(intent)
-            }
-            btn_medium -> {
-                val intent = Intent(this, GameActivity::class.java)
-                intent.putExtra("Level", "Medium")
-                startActivity(intent)
-            }
-            btn_hard -> {
-                val intent = Intent(this, GameActivity::class.java)
-                intent.putExtra("Level", "Hard")
-                startActivity(intent)
-            }
+            btn_easy ->
+                selectLevel("Easy")
+            btn_medium ->
+                selectLevel("Medium")
+            btn_hard ->
+                selectLevel("Hard")
         }
+    }
+
+    private fun selectLevel(level: String) {
+        editor = sharedPreferences?.edit()
+        editor?.clear()
+        editor?.apply()
+        val intent = Intent(this, GameActivity::class.java)
+        intent.putExtra("Level", level)
+        startActivity(intent)
     }
 }

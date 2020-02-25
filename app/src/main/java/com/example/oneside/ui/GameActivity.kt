@@ -1,14 +1,17 @@
 package com.example.oneside.ui
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Adapter
 import androidx.appcompat.app.AppCompatActivity
 import com.example.oneside.R
 import com.example.oneside.adapter.GridViewAdapter
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_game.*
+
 
 class GameActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -16,47 +19,58 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
     private val fixedArray = ArrayList<Int>()
     private val swapSiteArray = ArrayList<Int>()
     private val swapDirectionArray = ArrayList<Int>()
+    private var sharedFixedArray: String? = null
+    private var sharedRandomArray: String? = null
+    private var sharedSiteArray: String? = null
+    private var sharedDirectionArray: String? = null
     private var adapter: Adapter? = null
     private var randomNumber: Int = 0
+    private val preferenceKey = "PREFERENCE_FILE_KEY"
+    private var sharedPreferences: SharedPreferences? = null
+    private var editor: SharedPreferences.Editor? = null
+    private val gson = Gson()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
+        sharedPreferences = this.getSharedPreferences(preferenceKey, Context.MODE_PRIVATE)
+        editor = sharedPreferences?.edit()
+        editor?.apply()
+
         if (supportActionBar != null)
             supportActionBar?.hide()
 
-        val level = intent.getStringExtra("Level")
-
-        for (i in 1..9)
-            randomArray.add(i)
-        for (i in 1..9)
-            fixedArray.add(i)
-
-        when (level) {
+        when (intent.getStringExtra("Level")) {
             "Easy" -> randomNumber = (0..1).random()
             "Medium" -> randomNumber = (2..4).random()
             "Hard" -> randomNumber = (5..7).random()
         }
 
-        for (i in 0..randomNumber) {
-            for (j in 0..2) {
-                for (k in 0..2) {
-                    var swapSite = (0..3).random()
-                    val swapDirection = (0..1).random()
-                    if (swapSite == 2 || swapSite == 3)
-                        swapSite += 1
-                    swapSiteArray.add(swapSite)
-                    swapDirectionArray.add(swapDirection)
-                    rotateGrid(swapSite, swapDirection, false)
+        if (sharedPreferences!!.getString("FixedArray", "DEFAULT_STRING")!! != "DEFAULT_STRING") {
+            getFixedArray()
+            getRandomArray()
+            getSiteArray()
+            getDirectionArray()
+        } else {
+            for (i in 1..9)
+                randomArray.add(i)
+            for (i in 1..9)
+                fixedArray.add(i)
+            for (i in 0..randomNumber) {
+                for (j in 0..2) {
+                    for (k in 0..2) {
+                        var swapSite = (0..3).random()
+                        val swapDirection = (0..1).random()
+                        if (swapSite == 2 || swapSite == 3)
+                            swapSite += 1
+                        swapSiteArray.add(swapSite)
+                        swapDirectionArray.add(swapDirection)
+                        rotateGrid(swapSite, swapDirection, false)
+                    }
                 }
             }
         }
-
-        for (i in swapSiteArray)
-            Log.i("SwapSite", swapSiteArray[i].toString())
-        for (i in swapDirectionArray)
-            Log.i("SwapDirection", swapDirectionArray[i].toString())
 
         adapter = GridViewAdapter(
             this@GameActivity,
@@ -74,6 +88,50 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
         civ_7_btn.setOnClickListener(this)
         civ_8_btn.setOnClickListener(this)
         btn_solution.setOnClickListener(this)
+
+        val randomArrayJSON: String = gson.toJson(randomArray)
+        val swapSiteJSON: String = gson.toJson(swapSiteArray)
+        val swapDirectionJSON: String = gson.toJson(swapDirectionArray)
+        editor!!.putString("RandomArray", randomArrayJSON)
+        editor!!.putString("SwapSiteArray", swapSiteJSON)
+        editor!!.putString("SwapDirectionArray", swapDirectionJSON)
+        editor!!.apply()
+    }
+
+    private fun getFixedArray() {
+        sharedFixedArray = sharedPreferences!!.getString(
+            "FixedArray",
+            "DEFAULT_STRING"
+        )!!.replace("[^0-9]".toRegex(), "")
+        for (i in sharedFixedArray!!.indices)
+            fixedArray.add(sharedFixedArray!![i].toString().toInt())
+    }
+
+    private fun getRandomArray() {
+        sharedRandomArray = sharedPreferences!!.getString(
+            "RandomArray",
+            "DEFAULT_STRING"
+        )!!.replace("[^0-9]".toRegex(), "")
+        for (i in sharedRandomArray!!.indices)
+            randomArray.add(sharedRandomArray!![i].toString().toInt())
+    }
+
+    private fun getDirectionArray() {
+        sharedDirectionArray = sharedPreferences?.getString(
+            "SwapDirectionArray",
+            "DEFAULT_STRING"
+        )!!.replace("[^0-9]".toRegex(), "")
+        for (i in sharedDirectionArray!!.indices)
+            swapDirectionArray.add(sharedDirectionArray!![i].toString().toInt())
+    }
+
+    private fun getSiteArray() {
+        sharedSiteArray = sharedPreferences!!.getString(
+            "SwapSiteArray",
+            "DEFAULT_STRING"
+        )!!.replace("[^0-9]".toRegex(), "")
+        for (i in sharedSiteArray!!.indices)
+            swapSiteArray.add(sharedSiteArray!![i].toString().toInt())
     }
 
     private fun rotateGrid(swapSite: Int, swapDirection: Int, array: Boolean) {
@@ -91,6 +149,10 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
             fixedArray[i] = fixedArray[j].also { fixedArray[j] = fixedArray[i] }
         else
             randomArray[i] = randomArray[j].also { randomArray[j] = randomArray[i] }
+
+        val fixedArrayJSON: String = gson.toJson(fixedArray)
+        editor?.putString("FixedArray", fixedArrayJSON)
+        editor?.apply()
     }
 
     override fun onClick(view: View?) {
