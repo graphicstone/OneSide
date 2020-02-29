@@ -1,32 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/light_outline_bgn"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <TextView
-        android:id="@+id/tv_fixed_no"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:text="@string/_1"
-        android:textSize="24sp"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="false"
+    android:layout_width="@dimen/dp_100"
+    android:layout_height="@dimen/dp_100">
 
     <TextView
         android:id="@+id/tv_random_no"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:background="@drawable/curve_boundary"
-        android:text="@string/_1"
-        android:textStyle="bold"
-        android:textSize="16sp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/random_cell_boundary"
+        android:elevation="4dp"
+        android:fontFamily="@font/futura"
         android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/_1"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:translationX="-16dp"
+        app:layout_constraintStart_toEndOf="@id/cv_fixed_no"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_fixed_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:strokeColor="#15589226"
+        app:strokeWidth="1dp"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="6dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_fixed_no"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:minWidth="@dimen/dp_56"
+            android:minHeight="@dimen/dp_56"
+            android:fontFamily="@font/futura"
+            android:gravity="center"
+            android:text="@string/_1"
+            android:textSize="@dimen/sp_40" />
+
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

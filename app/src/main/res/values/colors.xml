@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#127B8B</color>
+    <color name="colorPrimary">#155892</color>
     <color name="colorPrimaryDark">#0C606D</color>
-    <color name="colorPrimaryLight">#289AAC</color>
+    <color name="colorPrimaryLight">#448CCB</color>
     <color name="colorAccent">#f4511e</color>
     <color name="light_accent">#ff7b52</color>
     <color name="primary_text">#212121</color>
@@ -20,4 +20,6 @@
     <color name="crayola_yellow">#E1AD01</color>
     <color name="color_light_blue">#f2f7fd</color>
     <color name="color_grey">#f5f5ef</color>
+    <color name="colorRowSwap">#2196F3</color>
+    <color name="colorColumnSwap">#FFC107</color>
 </resources>

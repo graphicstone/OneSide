@@ -1,17 +1,17 @@
 package com.example.oneside.ui
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Adapter
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.example.oneside.R
 import com.example.oneside.adapter.GridViewAdapter
 import kotlinx.android.synthetic.main.activity_solution.*
 
-class SolutionActivity : AppCompatActivity(), View.OnClickListener {
+class SolutionActivity : BaseActivity(), View.OnClickListener {
 
     private val fixedArray = ArrayList<Int>()
     private var randomArray = ArrayList<Int>()
@@ -40,7 +40,7 @@ class SolutionActivity : AppCompatActivity(), View.OnClickListener {
         getSiteArray()
         getDirectionArray()
 
-        val steps = "0/" + swapSite.size
+        val steps = "Moves: " + "0/" + swapSite.size
         tv_no_of_steps.text = steps
 
         adapter = GridViewAdapter(this, fixedArray, randomArray)
@@ -48,6 +48,7 @@ class SolutionActivity : AppCompatActivity(), View.OnClickListener {
 
         civ_prev_btn.setOnClickListener(this)
         civ_next_btn.setOnClickListener(this)
+        btn_new_game.setOnClickListener(this)
     }
 
     private fun getRandomArray() {
@@ -81,7 +82,7 @@ class SolutionActivity : AppCompatActivity(), View.OnClickListener {
         if (view == civ_prev_btn) {
             if (position > 0) {
                 position--
-                val steps: String = (position + 1).toString() + "/" + swapSite.size
+                val steps: String = "Moves: " + (position + 1).toString() + "/" + swapSite.size
                 tv_no_of_steps.text = steps
                 when (swapSite[position]) {
                     0 ->
@@ -97,7 +98,7 @@ class SolutionActivity : AppCompatActivity(), View.OnClickListener {
                 Toast.makeText(this, "First position", Toast.LENGTH_SHORT).show()
         } else if (view == civ_next_btn) {
             if (position < swapSite.size) {
-                val steps: String = (position + 1).toString() + "/" + swapSite.size
+                val steps: String = "Moves: " + (position + 1).toString() + "/" + swapSite.size
                 tv_no_of_steps.text = steps
                 when (swapSite[position]) {
                     0 ->
@@ -112,6 +113,10 @@ class SolutionActivity : AppCompatActivity(), View.OnClickListener {
                 position++
             } else
                 Toast.makeText(this, "Last position", Toast.LENGTH_SHORT).show()
+        } else if (view == btn_new_game) {
+            val intent = Intent(this, LevelActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 

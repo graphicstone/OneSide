@@ -1,137 +1,308 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_white"
     tools:context=".ui.GameActivity">
 
+    <ImageButton
+        android:id="@+id/ib_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_24"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:src="@drawable/ic_settings_black_24dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/settings" />
+
+    <LinearLayout
+        android:id="@+id/ll_app_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_24"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:contentDescription="@string/app_logo"
+            android:src="@drawable/ic_app_logo" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16">
+
+            <TextView
+                android:id="@+id/tv_app_name_shadow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.2"
+                android:fontFamily="@font/pacifico"
+                android:text="@string/app_name"
+                android:textColor="#448CCB"
+                android:textSize="@dimen/sp_32"
+                android:translationX="4dp"
+                android:translationY="-4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_app_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pacifico"
+                android:text="@string/app_name"
+                android:textColor="#155892"
+                android:textSize="@dimen/sp_32"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
     <TextView
-        android:id="@+id/tv_app_name"
+        android:id="@+id/tv_no_of_steps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="@dimen/dp_144"
+        android:paddingStart="@dimen/dp_16"
+        android:paddingEnd="@dimen/dp_16"
+        android:paddingTop="@dimen/dp_8"
+        android:paddingBottom="@dimen/dp_8"
+        android:text="@string/no_of_steps"
+        android:textAlignment="center"
+        android:textSize="@dimen/sp_20"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/light_curve_outline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_app_name"
+        app:layout_constraintBottom_toTopOf="@id/cl_grid"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/dp_8"
-        android:text="@string/app_name"
-        android:textAlignment="center"
-        android:textSize="@dimen/sp_32"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/dp_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_app_name"
+        app:layout_constraintBottom_toTopOf="@id/ll_row_swap" >
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_1_btn"
-        android:layout_width="@dimen/dp_48"
-        android:layout_height="@dimen/dp_48"
-        android:layout_marginStart="@dimen/dp_120"
+    <LinearLayout
+        android:id="@+id/ll_first_set"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@id/ll_second_set"
+        app:layout_constraintStart_toEndOf="@id/ll_last_set"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_1_btn"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:src="@drawable/ic_horizontal_swap" />
+
+        <View
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_2_btn"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:src="@drawable/ic_horizontal_swap" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_second_set"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
         android:layout_marginTop="@dimen/dp_16"
-        android:src="@drawable/ic_horizontal_swap"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_app_name" />
+        android:layout_marginEnd="@dimen/dp_16"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_first_set">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_2_btn"
-        android:layout_width="@dimen/dp_48"
-        android:layout_height="@dimen/dp_48"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_3_btn"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:layout_marginTop="@dimen/dp_72"
+            android:src="@drawable/ic_vertical_swap" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_4_btn"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/ic_vertical_swap" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_third_set"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@id/ll_second_set"
+        app:layout_constraintStart_toEndOf="@id/ll_last_set"
+        app:layout_constraintTop_toBottomOf="@id/rl_matrix">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_6_btn"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:src="@drawable/ic_horizontal_swap" />
+
+        <View
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_5_btn"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:src="@drawable/ic_horizontal_swap" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_last_set"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_marginStart="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_16"
-        android:layout_marginEnd="@dimen/dp_120"
-        android:src="@drawable/ic_horizontal_swap"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_app_name" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_8_btn"
-        android:layout_width="@dimen/dp_48"
-        android:layout_height="@dimen/dp_48"
-        android:layout_marginStart="@dimen/dp_16"
-        android:layout_marginTop="@dimen/dp_120"
-        android:src="@drawable/ic_vertical_swap"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_app_name" />
+        app:layout_constraintTop_toBottomOf="@id/ll_first_set">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_7_btn"
-        android:layout_width="@dimen/dp_48"
-        android:layout_height="@dimen/dp_48"
-        android:layout_marginStart="@dimen/dp_16"
-        android:layout_marginTop="@dimen/dp_48"
-        android:src="@drawable/ic_vertical_swap"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/civ_8_btn" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_7_btn"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:layout_marginTop="@dimen/dp_72"
+            android:src="@drawable/ic_vertical_swap" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_3_btn"
-        android:layout_width="@dimen/dp_48"
-        android:layout_height="@dimen/dp_48"
-        android:layout_marginTop="@dimen/dp_120"
-        android:layout_marginEnd="@dimen/dp_16"
-        android:src="@drawable/ic_vertical_swap"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_app_name" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_8_btn"
+            android:layout_width="@dimen/dp_48"
+            android:layout_marginTop="50dp"
+            android:layout_height="@dimen/dp_48"
+            android:src="@drawable/ic_vertical_swap" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_4_btn"
-        android:layout_width="@dimen/dp_48"
-        android:layout_height="@dimen/dp_48"
-        android:layout_marginTop="@dimen/dp_48"
-        android:layout_marginEnd="@dimen/dp_16"
-        android:src="@drawable/ic_vertical_swap"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/civ_3_btn" />
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/rl_matrix"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_16"
-        android:layout_marginEnd="@dimen/dp_16"
-        app:layout_constraintEnd_toStartOf="@id/civ_3_btn"
-        app:layout_constraintStart_toEndOf="@id/civ_8_btn"
-        app:layout_constraintTop_toBottomOf="@id/civ_1_btn">
+        app:layout_constraintEnd_toStartOf="@id/ll_second_set"
+        app:layout_constraintStart_toEndOf="@id/ll_last_set"
+        app:layout_constraintTop_toBottomOf="@id/ll_first_set">
 
         <GridView
             android:id="@+id/gv_matrix_layout"
-            android:layout_width="224dp"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:columnWidth="@dimen/dp_64"
-            android:horizontalSpacing="@dimen/dp_16"
             android:numColumns="3"
-            android:stretchMode="none"
-            android:verticalSpacing="@dimen/dp_16" />
+            android:stretchMode="columnWidth">
+
+        </GridView>
 
     </RelativeLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_6_btn"
-        android:layout_width="@dimen/dp_48"
-        android:layout_height="@dimen/dp_48"
-        android:layout_marginStart="@dimen/dp_120"
-        android:layout_marginTop="@dimen/dp_16"
-        android:src="@drawable/ic_horizontal_swap"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rl_matrix" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_5_btn"
-        android:layout_width="@dimen/dp_48"
-        android:layout_height="@dimen/dp_48"
-        android:layout_marginTop="@dimen/dp_16"
-        android:layout_marginEnd="@dimen/dp_120"
-        android:src="@drawable/ic_horizontal_swap"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rl_matrix" />
-
-    <Button
-        android:id="@+id/btn_solution"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/ll_row_swap"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/btn_solution"
+        app:layout_constraintEnd_toStartOf="@id/ll_column_swap"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:background="@drawable/curve_boundary"
+            android:backgroundTint="@color/colorRowSwap" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:text="@string/row_swap"
+            android:textSize="@dimen/sp_16" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_column_swap"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/btn_solution"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ll_row_swap">
+
+        <View
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:background="@drawable/curve_boundary"
+            android:backgroundTint="@color/colorColumnSwap" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:text="@string/column_swap"
+            android:textSize="@dimen/sp_16" />
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_solution"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_32"
+        android:layout_marginStart="@dimen/dp_24"
+        android:layout_marginEnd="@dimen/dp_24"
+        android:backgroundTint="@color/colorPrimary"
+        android:minWidth="@dimen/dp_180"
         android:text="@string/show_solution"
         android:textSize="@dimen/sp_16"
-        android:background="@drawable/light_outline_bgn"
-        android:layout_margin="@dimen/dp_16"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/color_white"
+        app:cornerRadius="@dimen/dp_32"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

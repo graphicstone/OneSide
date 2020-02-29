@@ -6,11 +6,10 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.view.animation.AnimationUtils
-import androidx.appcompat.app.AppCompatActivity
 import com.example.oneside.R
 import kotlinx.android.synthetic.main.activity_splash.*
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
 
     private var sharedPreferences: SharedPreferences? = null
 
@@ -20,12 +19,15 @@ class SplashActivity : AppCompatActivity() {
     private val mRunnable: Runnable = Runnable {
         sharedPreferences = this.getSharedPreferences("PREFERENCE_FILE_KEY", Context.MODE_PRIVATE)
         if (!isFinishing) {
-            if(sharedPreferences!!.getString("FixedArray", "DEFAULT_STRING")!! != "DEFAULT_STRING") {
+            if (sharedPreferences!!.getString(
+                    "FixedArray",
+                    "DEFAULT_STRING"
+                )!! != "DEFAULT_STRING"
+            ) {
                 val intent = Intent(applicationContext, GameActivity::class.java)
                 startActivity(intent)
                 finish()
-            }
-            else {
+            } else {
                 val intent = Intent(applicationContext, LandingActivity::class.java)
                 startActivity(intent)
                 finish()

@@ -8,4 +8,13 @@
     <string name="hard">Hard</string>
     <string name="no_of_steps">No of steps</string>
     <string name="prefernce_file_key">PREFERENCE_FILE_KEY</string>
+    <string name="new_game">New Game</string>
+    <string name="how_to_play">How to play</string>
+    <string name="about">About</string>
+    <string name="please_choose_your_level">Please choose your difficulty level</string>
+    <string name="app_logo">App Logo</string>
+    <string name="row_swap">Row Swap</string>
+    <string name="column_swap">Column Swap</string>
+    <string name="resume">Resume</string>
+    <string name="settings">Settings</string>
 </resources>

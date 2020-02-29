@@ -6,14 +6,14 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Adapter
-import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintSet
 import com.example.oneside.R
 import com.example.oneside.adapter.GridViewAdapter
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_game.*
 
 
-class GameActivity : AppCompatActivity(), View.OnClickListener {
+class GameActivity : BaseActivity(), View.OnClickListener {
 
     private val randomArray = ArrayList<Int>()
     private val fixedArray = ArrayList<Int>()
@@ -29,6 +29,7 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
     private var sharedPreferences: SharedPreferences? = null
     private var editor: SharedPreferences.Editor? = null
     private val gson = Gson()
+    private var movesCount: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +53,11 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
             getRandomArray()
             getSiteArray()
             getDirectionArray()
+            getMovesCount()
         } else {
+            movesCount = 0
+            val steps = "Moves: $movesCount"
+            tv_no_of_steps.text = steps
             for (i in 1..9)
                 randomArray.add(i)
             for (i in 1..9)
@@ -79,6 +84,9 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
         )
         gv_matrix_layout.adapter = adapter as GridViewAdapter
 
+        val constraintSet = ConstraintSet()
+        constraintSet.clone(cl_grid)
+
         civ_1_btn.setOnClickListener(this)
         civ_2_btn.setOnClickListener(this)
         civ_3_btn.setOnClickListener(this)
@@ -88,14 +96,23 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
         civ_7_btn.setOnClickListener(this)
         civ_8_btn.setOnClickListener(this)
         btn_solution.setOnClickListener(this)
+        ib_settings.setOnClickListener(this)
 
         val randomArrayJSON: String = gson.toJson(randomArray)
         val swapSiteJSON: String = gson.toJson(swapSiteArray)
         val swapDirectionJSON: String = gson.toJson(swapDirectionArray)
-        editor!!.putString("RandomArray", randomArrayJSON)
-        editor!!.putString("SwapSiteArray", swapSiteJSON)
-        editor!!.putString("SwapDirectionArray", swapDirectionJSON)
-        editor!!.apply()
+        editor?.putString("RandomArray", randomArrayJSON)
+        editor?.putString("SwapSiteArray", swapSiteJSON)
+        editor?.putString("SwapDirectionArray", swapDirectionJSON)
+        editor?.putInt("Moves", movesCount)
+        editor?.apply()
+    }
+
+    private fun getMovesCount() {
+        val steps = sharedPreferences?.getInt("Moves", 0)
+        val moves = "Moves: $steps"
+        movesCount = steps!!.toInt()
+        tv_no_of_steps.text = moves
     }
 
     private fun getFixedArray() {
@@ -158,34 +175,42 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view) {
             civ_1_btn -> {
+                updateMovesCount()
                 rotateGrid(0, 1, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
             }
             civ_2_btn -> {
+                updateMovesCount()
                 rotateGrid(1, 1, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
             }
             civ_3_btn -> {
+                updateMovesCount()
                 rotateGrid(1, 0, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
             }
             civ_4_btn -> {
+                updateMovesCount()
                 rotateGrid(4, 0, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
             }
             civ_5_btn -> {
+                updateMovesCount()
                 rotateGrid(4, 1, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
             }
             civ_6_btn -> {
+                updateMovesCount()
                 rotateGrid(3, 1, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
             }
             civ_7_btn -> {
+                updateMovesCount()
                 rotateGrid(3, 0, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
             }
             civ_8_btn -> {
+                updateMovesCount()
                 rotateGrid(0, 0, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
             }
@@ -196,6 +221,18 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
                 intent.putExtra("RandomArray", randomArray)
                 startActivity(intent)
             }
+            ib_settings -> {
+                val intent = Intent(this, ResumeActivity::class.java)
+                startActivity(intent)
+            }
         }
+    }
+
+    private fun updateMovesCount() {
+        movesCount++
+        val steps = "Moves: $movesCount"
+        tv_no_of_steps.text = steps
+        editor?.putInt("Moves", movesCount)
+        editor?.apply()
     }
 }

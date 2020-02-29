@@ -9,14 +9,17 @@
         android:roundIcon="@mipmap/ic_round_app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.ResumeActivity" />
+        <activity android:name=".ui.LandingActivity" />
         <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.LandingActivity" />
+        <activity android:name=".ui.LevelActivity" />
         <activity android:name=".ui.SolutionActivity" />
         <activity android:name=".ui.GameActivity" />
     </application>
