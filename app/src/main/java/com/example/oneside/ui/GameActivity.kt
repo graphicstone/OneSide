@@ -19,17 +19,18 @@ class GameActivity : BaseActivity(), View.OnClickListener {
     private val fixedArray = ArrayList<Int>()
     private val swapSiteArray = ArrayList<Int>()
     private val swapDirectionArray = ArrayList<Int>()
+    private val alteredNumberArray = ArrayList<Int>()
     private var sharedFixedArray: String? = null
     private var sharedRandomArray: String? = null
     private var sharedSiteArray: String? = null
     private var sharedDirectionArray: String? = null
-    private var adapter: Adapter? = null
     private var randomNumber: Int = 0
+    private var movesCount: Int = 0
     private val preferenceKey = "PREFERENCE_FILE_KEY"
     private var sharedPreferences: SharedPreferences? = null
     private var editor: SharedPreferences.Editor? = null
     private val gson = Gson()
-    private var movesCount: Int = 0
+    private var adapter: Adapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +48,9 @@ class GameActivity : BaseActivity(), View.OnClickListener {
             "Medium" -> randomNumber = (2..4).random()
             "Hard" -> randomNumber = (5..7).random()
         }
+
+        for (i in 0..4)
+            alteredNumberArray.add(-1)
 
         if (sharedPreferences!!.getString("FixedArray", "DEFAULT_STRING")!! != "DEFAULT_STRING") {
             getFixedArray()
@@ -80,7 +84,8 @@ class GameActivity : BaseActivity(), View.OnClickListener {
         adapter = GridViewAdapter(
             this@GameActivity,
             fixedArray,
-            randomArray
+            randomArray,
+            alteredNumberArray
         )
         gv_matrix_layout.adapter = adapter as GridViewAdapter
 
@@ -153,9 +158,19 @@ class GameActivity : BaseActivity(), View.OnClickListener {
 
     private fun rotateGrid(swapSite: Int, swapDirection: Int, array: Boolean) {
         if (swapDirection == 0) {
+            alteredNumberArray[0] = 0
+            alteredNumberArray[1] = swapSite
+            alteredNumberArray[2] = swapSite + 1
+            alteredNumberArray[3] = swapSite + 3
+            alteredNumberArray[4] = swapSite + 4
             swapNumbers(swapSite, swapSite + 3, array)
             swapNumbers(swapSite + 4, swapSite + 1, array)
         } else {
+            alteredNumberArray[0] = 1
+            alteredNumberArray[1] = swapSite
+            alteredNumberArray[2] = swapSite + 1
+            alteredNumberArray[3] = swapSite + 3
+            alteredNumberArray[4] = swapSite + 4
             swapNumbers(swapSite, swapSite + 1, array)
             swapNumbers(swapSite + 4, swapSite + 3, array)
         }
@@ -216,9 +231,6 @@ class GameActivity : BaseActivity(), View.OnClickListener {
             }
             btn_solution -> {
                 val intent = Intent(this, SolutionActivity::class.java)
-                intent.putExtra("SwapSite", swapSiteArray)
-                intent.putExtra("SwapDirection", swapDirectionArray)
-                intent.putExtra("RandomArray", randomArray)
                 startActivity(intent)
             }
             ib_settings -> {

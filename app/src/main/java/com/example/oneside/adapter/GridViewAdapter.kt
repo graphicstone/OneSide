@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import com.example.oneside.R
 
 class GridViewAdapter(
     private var context: Context,
     private var fixedNo: ArrayList<Int>,
-    private var randomNo: ArrayList<Int>
+    private var randomNo: ArrayList<Int>,
+    private var alteredNumberArray: ArrayList<Int>
 ) : BaseAdapter() {
 
     private val list = numberArray()
@@ -40,6 +42,34 @@ class GridViewAdapter(
 
         holder.mRandomNo?.text = randomNo[position].toString()
         holder.mFixedNo?.text = fixedNo[position].toString()
+
+        for (i in 0..8) {
+            holder.mFixedNo?.setBackgroundColor(
+                ContextCompat.getColor(
+                    context,
+                    R.color.color_white
+                )
+            )
+            holder.mFixedNo?.setTextColor(ContextCompat.getColor(context, R.color.primary_text))
+        }
+
+        if (alteredNumberArray[0] == 0) {
+            if (position == alteredNumberArray[1] || position == alteredNumberArray[2] || position == alteredNumberArray[3] || position == alteredNumberArray[4])
+                holder.mFixedNo?.setBackgroundColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.colorRowSwap
+                    )
+                )
+        } else if (alteredNumberArray[0] == 1) {
+            if (position == alteredNumberArray[1] || position == alteredNumberArray[2] || position == alteredNumberArray[3] || position == alteredNumberArray[4])
+                holder.mFixedNo?.setBackgroundColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.colorColumnSwap
+                    )
+                )
+        }
 
         return myView!!
 

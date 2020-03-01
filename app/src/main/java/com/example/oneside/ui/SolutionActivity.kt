@@ -17,6 +17,7 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
     private var randomArray = ArrayList<Int>()
     private var swapSite = ArrayList<Int>()
     private var swapDirection = ArrayList<Int>()
+    private val alteredNumberArray = ArrayList<Int>()
     private var adapter: Adapter? = null
     private var position: Int = 0
     private var sharedSiteArray: String? = null
@@ -36,6 +37,9 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
         for (i in 1..9)
             fixedArray.add(i)
 
+        for (i in 0..4)
+            alteredNumberArray.add(-1)
+
         getRandomArray()
         getSiteArray()
         getDirectionArray()
@@ -43,7 +47,7 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
         val steps = "Moves: " + "0/" + swapSite.size
         tv_no_of_steps.text = steps
 
-        adapter = GridViewAdapter(this, fixedArray, randomArray)
+        adapter = GridViewAdapter(this, fixedArray, randomArray, alteredNumberArray)
         gv_solution_grid.adapter = adapter as GridViewAdapter
 
         civ_prev_btn.setOnClickListener(this)
@@ -132,9 +136,19 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
 
     private fun rotateGrid(swapSite: Int, swapDirection: Int) {
         if (swapDirection == 0) {
+            alteredNumberArray[0] = 0
+            alteredNumberArray[1] = swapSite
+            alteredNumberArray[2] = swapSite + 1
+            alteredNumberArray[3] = swapSite + 3
+            alteredNumberArray[4] = swapSite + 4
             swapNumbers(swapSite, swapSite + 3)
             swapNumbers(swapSite + 4, swapSite + 1)
         } else {
+            alteredNumberArray[0] = 1
+            alteredNumberArray[1] = swapSite
+            alteredNumberArray[2] = swapSite + 1
+            alteredNumberArray[3] = swapSite + 3
+            alteredNumberArray[4] = swapSite + 4
             swapNumbers(swapSite, swapSite + 1)
             swapNumbers(swapSite + 4, swapSite + 3)
         }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,221 +13,169 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_24"
         android:layout_marginEnd="@dimen/dp_16"
-        android:src="@drawable/ic_settings_black_24dp"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/settings"
+        android:src="@drawable/ic_settings_black_24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/settings" />
-
-    <LinearLayout
-        android:id="@+id/ll_app_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_24"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:layout_width="@dimen/dp_48"
-            android:layout_height="@dimen/dp_48"
-            android:contentDescription="@string/app_logo"
-            android:src="@drawable/ic_app_logo" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_16">
-
-            <TextView
-                android:id="@+id/tv_app_name_shadow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.2"
-                android:fontFamily="@font/pacifico"
-                android:text="@string/app_name"
-                android:textColor="#448CCB"
-                android:textSize="@dimen/sp_32"
-                android:translationX="4dp"
-                android:translationY="-4dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_app_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/pacifico"
-                android:text="@string/app_name"
-                android:textColor="#155892"
-                android:textSize="@dimen/sp_32"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_no_of_steps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/light_curve_outline"
         android:minWidth="@dimen/dp_144"
         android:paddingStart="@dimen/dp_16"
-        android:paddingEnd="@dimen/dp_16"
         android:paddingTop="@dimen/dp_8"
+        android:paddingEnd="@dimen/dp_16"
         android:paddingBottom="@dimen/dp_8"
         android:text="@string/no_of_steps"
         android:textAlignment="center"
-        android:textSize="@dimen/sp_20"
         android:textColor="@color/colorPrimary"
-        android:background="@drawable/light_curve_outline"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/sp_20"
+        app:layout_constraintBottom_toTopOf="@id/cl_grid"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_app_name"
-        app:layout_constraintBottom_toTopOf="@id/cl_grid"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ib_settings" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_24"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="@dimen/dp_24"
+        app:layout_constraintBottom_toTopOf="@id/ll_row_swap"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_app_name"
-        app:layout_constraintBottom_toTopOf="@id/ll_row_swap" >
-
-    <LinearLayout
-        android:id="@+id/ll_first_set"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        app:layout_constraintEnd_toStartOf="@id/ll_second_set"
-        app:layout_constraintStart_toEndOf="@id/ll_last_set"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civ_1_btn"
-            android:layout_width="@dimen/dp_48"
-            android:layout_height="@dimen/dp_48"
-            android:src="@drawable/ic_horizontal_swap" />
-
-        <View
-            android:layout_width="@dimen/dp_48"
-            android:layout_height="@dimen/dp_48" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civ_2_btn"
-            android:layout_width="@dimen/dp_48"
-            android:layout_height="@dimen/dp_48"
-            android:src="@drawable/ic_horizontal_swap" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_second_set"
-        android:layout_width="wrap_content"
-        android:layout_height="300dp"
-        android:layout_marginTop="@dimen/dp_16"
-        android:layout_marginEnd="@dimen/dp_16"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_first_set">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civ_3_btn"
-            android:layout_width="@dimen/dp_48"
-            android:layout_height="@dimen/dp_48"
-            android:layout_marginTop="@dimen/dp_72"
-            android:src="@drawable/ic_vertical_swap" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civ_4_btn"
-            android:layout_width="@dimen/dp_48"
-            android:layout_height="@dimen/dp_48"
-            android:layout_marginTop="50dp"
-            android:src="@drawable/ic_vertical_swap" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_third_set"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        app:layout_constraintEnd_toStartOf="@id/ll_second_set"
-        app:layout_constraintStart_toEndOf="@id/ll_last_set"
-        app:layout_constraintTop_toBottomOf="@id/rl_matrix">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civ_6_btn"
-            android:layout_width="@dimen/dp_48"
-            android:layout_height="@dimen/dp_48"
-            android:src="@drawable/ic_horizontal_swap" />
-
-        <View
-            android:layout_width="@dimen/dp_48"
-            android:layout_height="@dimen/dp_48" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civ_5_btn"
-            android:layout_width="@dimen/dp_48"
-            android:layout_height="@dimen/dp_48"
-            android:src="@drawable/ic_horizontal_swap" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_last_set"
-        android:layout_width="wrap_content"
-        android:layout_height="300dp"
-        android:layout_marginStart="@dimen/dp_16"
-        android:layout_marginTop="@dimen/dp_16"
-        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_first_set">
+        app:layout_constraintTop_toBottomOf="@id/tv_no_of_steps">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civ_7_btn"
-            android:layout_width="@dimen/dp_48"
-            android:layout_height="@dimen/dp_48"
-            android:layout_marginTop="@dimen/dp_72"
-            android:src="@drawable/ic_vertical_swap" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civ_8_btn"
-            android:layout_width="@dimen/dp_48"
-            android:layout_marginTop="50dp"
-            android:layout_height="@dimen/dp_48"
-            android:src="@drawable/ic_vertical_swap" />
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_matrix"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_16"
-        app:layout_constraintEnd_toStartOf="@id/ll_second_set"
-        app:layout_constraintStart_toEndOf="@id/ll_last_set"
-        app:layout_constraintTop_toBottomOf="@id/ll_first_set">
-
-        <GridView
-            android:id="@+id/gv_matrix_layout"
-            android:layout_width="280dp"
+        <LinearLayout
+            android:id="@+id/ll_first_set"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:numColumns="3"
-            android:stretchMode="columnWidth">
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@id/ll_second_set"
+            app:layout_constraintStart_toEndOf="@id/ll_last_set"
+            app:layout_constraintTop_toTopOf="parent">
 
-        </GridView>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_1_btn"
+                android:layout_width="@dimen/dp_48"
+                android:layout_height="@dimen/dp_48"
+                android:src="@drawable/ic_horizontal_swap" />
 
-    </RelativeLayout>
+            <View
+                android:layout_width="@dimen/dp_48"
+                android:layout_height="@dimen/dp_48" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_2_btn"
+                android:layout_width="@dimen/dp_48"
+                android:layout_height="@dimen/dp_48"
+                android:src="@drawable/ic_horizontal_swap" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_second_set"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_first_set">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_3_btn"
+                android:layout_width="@dimen/dp_48"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_72"
+                android:src="@drawable/ic_vertical_swap" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_4_btn"
+                android:layout_width="@dimen/dp_48"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/ic_vertical_swap" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_third_set"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@id/ll_second_set"
+            app:layout_constraintStart_toEndOf="@id/ll_last_set"
+            app:layout_constraintTop_toBottomOf="@id/rl_matrix">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_6_btn"
+                android:layout_width="@dimen/dp_48"
+                android:layout_height="@dimen/dp_48"
+                android:src="@drawable/ic_horizontal_swap" />
+
+            <View
+                android:layout_width="@dimen/dp_48"
+                android:layout_height="@dimen/dp_48" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_5_btn"
+                android:layout_width="@dimen/dp_48"
+                android:layout_height="@dimen/dp_48"
+                android:src="@drawable/ic_horizontal_swap" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_last_set"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_16"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_first_set">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_8_btn"
+                android:layout_width="@dimen/dp_48"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_72"
+                android:src="@drawable/ic_vertical_swap" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_7_btn"
+                android:layout_width="@dimen/dp_48"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/ic_vertical_swap" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_matrix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            app:layout_constraintEnd_toStartOf="@id/ll_second_set"
+            app:layout_constraintStart_toEndOf="@id/ll_last_set"
+            app:layout_constraintTop_toBottomOf="@id/ll_first_set">
+
+            <GridView
+                android:id="@+id/gv_matrix_layout"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:numColumns="3"
+                android:stretchMode="columnWidth">
+
+            </GridView>
+
+        </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -290,17 +237,17 @@
         android:id="@+id/btn_solution"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/dp_16"
-        android:layout_marginBottom="@dimen/dp_32"
         android:layout_marginStart="@dimen/dp_24"
         android:layout_marginEnd="@dimen/dp_24"
+        android:layout_marginBottom="@dimen/dp_32"
         android:backgroundTint="@color/colorPrimary"
-        android:minWidth="@dimen/dp_180"
-        android:text="@string/show_solution"
-        android:textSize="@dimen/sp_16"
-        android:textColor="@color/color_white"
-        app:cornerRadius="@dimen/dp_32"
         android:elevation="2dp"
+        android:minWidth="@dimen/dp_180"
+        android:padding="@dimen/dp_16"
+        android:text="@string/show_solution"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/sp_16"
+        app:cornerRadius="@dimen/dp_32"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
