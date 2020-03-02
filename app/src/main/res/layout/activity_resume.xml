@@ -21,7 +21,7 @@
             android:layout_width="@dimen/dp_48"
             android:layout_height="@dimen/dp_48"
             android:contentDescription="@string/app_logo"
-            android:src="@drawable/ic_app_logo" />
+            android:src="@drawable/ic_round_icon" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
@@ -62,64 +62,72 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
         android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_app_name"
-        app:layout_constraintBottom_toBottomOf="parent" >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_app_name">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_resume"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dp_16"
-            android:layout_marginTop="@dimen/dp_24"
             android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_24"
             android:layout_marginEnd="@dimen/dp_24"
-            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="@font/museo_sans_500"
+            android:padding="@dimen/dp_16"
             android:text="@string/resume"
             android:textSize="@dimen/sp_20"
-            app:cornerRadius="@dimen/dp_32"/>
+            app:cornerRadius="@dimen/dp_32"
+            app:strokeColor="@color/colorPrimary" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_new_game"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dp_16"
-            android:layout_marginTop="@dimen/dp_24"
             android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_24"
             android:layout_marginEnd="@dimen/dp_24"
-            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="@font/museo_sans_500"
+            android:padding="@dimen/dp_16"
             android:text="@string/new_game"
             android:textSize="@dimen/sp_20"
-            app:cornerRadius="@dimen/dp_32"/>
+            app:cornerRadius="@dimen/dp_32"
+            app:strokeColor="@color/colorPrimary" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_how_to_play"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dp_16"
-            android:layout_marginTop="@dimen/dp_24"
             android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_24"
             android:layout_marginEnd="@dimen/dp_24"
-            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="@font/museo_sans_500"
+            android:padding="@dimen/dp_16"
             android:text="@string/how_to_play"
             android:textSize="@dimen/sp_20"
-            app:cornerRadius="@dimen/dp_32"/>
+            app:cornerRadius="@dimen/dp_32"
+            app:strokeColor="@color/colorPrimary" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_about"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dp_16"
-            android:layout_marginTop="@dimen/dp_24"
             android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_24"
             android:layout_marginEnd="@dimen/dp_24"
-            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="@font/museo_sans_500"
+            android:padding="@dimen/dp_16"
             android:text="@string/about"
             android:textSize="@dimen/sp_20"
-            app:cornerRadius="@dimen/dp_32"/>
+            app:cornerRadius="@dimen/dp_32"
+            app:strokeColor="@color/colorPrimary" />
 
     </LinearLayout>
 

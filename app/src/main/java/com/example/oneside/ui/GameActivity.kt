@@ -43,14 +43,12 @@ class GameActivity : BaseActivity(), View.OnClickListener {
         if (supportActionBar != null)
             supportActionBar?.hide()
 
-        when (intent.getStringExtra("Level")) {
+        when (sharedPreferences?.getString("Level", "DEFAULT_STRING")) {
             "Easy" -> randomNumber = (0..1).random()
             "Medium" -> randomNumber = (2..4).random()
             "Hard" -> randomNumber = (5..7).random()
+            "DEFAULT_STRING" -> randomNumber = (0..1).random()
         }
-
-        for (i in 0..4)
-            alteredNumberArray.add(-1)
 
         if (sharedPreferences!!.getString("FixedArray", "DEFAULT_STRING")!! != "DEFAULT_STRING") {
             getFixedArray()
@@ -80,6 +78,11 @@ class GameActivity : BaseActivity(), View.OnClickListener {
                 }
             }
         }
+
+        for (i in 0..4)
+            alteredNumberArray.add(-1)
+
+        tv_level.text = sharedPreferences?.getString("Level", "DEFAULT_STRING")
 
         adapter = GridViewAdapter(
             this@GameActivity,
@@ -158,19 +161,23 @@ class GameActivity : BaseActivity(), View.OnClickListener {
 
     private fun rotateGrid(swapSite: Int, swapDirection: Int, array: Boolean) {
         if (swapDirection == 0) {
-            alteredNumberArray[0] = 0
-            alteredNumberArray[1] = swapSite
-            alteredNumberArray[2] = swapSite + 1
-            alteredNumberArray[3] = swapSite + 3
-            alteredNumberArray[4] = swapSite + 4
+            if (array) {
+                alteredNumberArray[0] = 0
+                alteredNumberArray[1] = swapSite
+                alteredNumberArray[2] = swapSite + 1
+                alteredNumberArray[3] = swapSite + 3
+                alteredNumberArray[4] = swapSite + 4
+            }
             swapNumbers(swapSite, swapSite + 3, array)
             swapNumbers(swapSite + 4, swapSite + 1, array)
         } else {
-            alteredNumberArray[0] = 1
-            alteredNumberArray[1] = swapSite
-            alteredNumberArray[2] = swapSite + 1
-            alteredNumberArray[3] = swapSite + 3
-            alteredNumberArray[4] = swapSite + 4
+            if (array) {
+                alteredNumberArray[0] = 1
+                alteredNumberArray[1] = swapSite
+                alteredNumberArray[2] = swapSite + 1
+                alteredNumberArray[3] = swapSite + 3
+                alteredNumberArray[4] = swapSite + 4
+            }
             swapNumbers(swapSite, swapSite + 1, array)
             swapNumbers(swapSite + 4, swapSite + 3, array)
         }

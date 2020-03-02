@@ -46,48 +46,56 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_40"
-        android:text="@string/please_choose_your_level"
+        android:fontFamily="@font/museo_sans_700"
+        android:text="@string/choose_your_level"
+        android:textAlignment="center"
+        android:textAllCaps="true"
         android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/sp_20"
-        android:textAlignment="center" />
+        android:textSize="@dimen/sp_20" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_easy"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/dp_16"
         android:layout_marginStart="@dimen/dp_24"
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginEnd="@dimen/dp_24"
-        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="@font/museo_sans_500"
+        android:padding="@dimen/dp_16"
         android:text="@string/easy"
         android:textSize="@dimen/sp_16"
-        app:cornerRadius="@dimen/dp_32"/>
+        app:cornerRadius="@dimen/dp_32"
+        app:strokeColor="@color/colorPrimary" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_medium"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/dp_16"
         android:layout_marginStart="@dimen/dp_24"
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginEnd="@dimen/dp_24"
-        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="@font/museo_sans_500"
+        android:padding="@dimen/dp_16"
         android:text="@string/medium"
         android:textSize="@dimen/sp_16"
-        app:cornerRadius="@dimen/dp_32"/>
+        app:cornerRadius="@dimen/dp_32"
+        app:strokeColor="@color/colorPrimary" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_hard"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/dp_16"
         android:layout_marginStart="@dimen/dp_24"
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginEnd="@dimen/dp_24"
-        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="@font/museo_sans_500"
+        android:padding="@dimen/dp_16"
         android:text="@string/hard"
         android:textSize="@dimen/sp_16"
-        app:cornerRadius="@dimen/dp_32"/>
+        app:cornerRadius="@dimen/dp_32"
+        app:strokeColor="@color/colorPrimary" />
 
 </LinearLayout>

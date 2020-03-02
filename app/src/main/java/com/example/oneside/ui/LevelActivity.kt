@@ -41,6 +41,7 @@ class LevelActivity : BaseActivity(), View.OnClickListener {
     private fun selectLevel(level: String) {
         editor = sharedPreferences?.edit()
         editor?.clear()
+        editor?.putString("Level", level)
         editor?.apply()
         val intent = Intent(this, GameActivity::class.java)
         intent.putExtra("Level", level)

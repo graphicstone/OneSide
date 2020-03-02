@@ -24,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/light_curve_outline"
+        android:fontFamily="@font/museo_sans_500"
         android:minWidth="@dimen/dp_144"
         android:paddingStart="@dimen/dp_16"
         android:paddingTop="@dimen/dp_8"
@@ -34,9 +35,29 @@
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/sp_20"
         app:layout_constraintBottom_toTopOf="@id/cl_grid"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_level"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ib_settings" />
+
+    <TextView
+        android:id="@+id/tv_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/light_curve_outline"
+        android:fontFamily="@font/museo_sans_500"
+        android:minWidth="@dimen/dp_144"
+        android:paddingStart="@dimen/dp_16"
+        android:paddingTop="@dimen/dp_8"
+        android:paddingEnd="@dimen/dp_16"
+        android:paddingBottom="@dimen/dp_8"
+        android:text="@string/level"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/sp_20"
+        app:layout_constraintBottom_toBottomOf="@id/tv_no_of_steps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_no_of_steps"
+        app:layout_constraintTop_toTopOf="@id/tv_no_of_steps" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_grid"
@@ -63,7 +84,7 @@
                 android:id="@+id/civ_1_btn"
                 android:layout_width="@dimen/dp_48"
                 android:layout_height="@dimen/dp_48"
-                android:src="@drawable/ic_horizontal_swap" />
+                android:src="@drawable/ic_vertical_swap" />
 
             <View
                 android:layout_width="@dimen/dp_48"
@@ -73,7 +94,7 @@
                 android:id="@+id/civ_2_btn"
                 android:layout_width="@dimen/dp_48"
                 android:layout_height="@dimen/dp_48"
-                android:src="@drawable/ic_horizontal_swap" />
+                android:src="@drawable/ic_vertical_swap" />
 
         </LinearLayout>
 
@@ -117,7 +138,7 @@
                 android:id="@+id/civ_6_btn"
                 android:layout_width="@dimen/dp_48"
                 android:layout_height="@dimen/dp_48"
-                android:src="@drawable/ic_horizontal_swap" />
+                android:src="@drawable/ic_vertical_swap" />
 
             <View
                 android:layout_width="@dimen/dp_48"
@@ -127,7 +148,7 @@
                 android:id="@+id/civ_5_btn"
                 android:layout_width="@dimen/dp_48"
                 android:layout_height="@dimen/dp_48"
-                android:src="@drawable/ic_horizontal_swap" />
+                android:src="@drawable/ic_vertical_swap" />
 
         </LinearLayout>
 
@@ -201,6 +222,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_16"
+            android:fontFamily="@font/museo_sans_300"
             android:text="@string/row_swap"
             android:textSize="@dimen/sp_16" />
 
@@ -228,6 +250,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_16"
+            android:fontFamily="@font/museo_sans_300"
             android:text="@string/column_swap"
             android:textSize="@dimen/sp_16" />
 
@@ -235,19 +258,24 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_solution"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_24"
         android:layout_marginEnd="@dimen/dp_24"
         android:layout_marginBottom="@dimen/dp_32"
-        android:backgroundTint="@color/colorPrimary"
-        android:elevation="2dp"
+        android:backgroundTint="#d6e4f1"
+        android:fontFamily="@font/museo_sans_300"
         android:minWidth="@dimen/dp_180"
-        android:padding="@dimen/dp_16"
+        android:paddingStart="@dimen/dp_16"
+        android:paddingTop="@dimen/dp_8"
+        android:paddingEnd="@dimen/dp_16"
+        android:paddingBottom="@dimen/dp_8"
         android:text="@string/show_solution"
-        android:textColor="@color/color_white"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
         android:textSize="@dimen/sp_16"
-        app:cornerRadius="@dimen/dp_32"
+        app:cornerRadius="@dimen/dp_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
