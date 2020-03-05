@@ -8,6 +8,7 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.oneside.R
+import com.google.android.material.card.MaterialCardView
 
 class GridViewAdapter(
     private var context: Context,
@@ -34,6 +35,7 @@ class GridViewAdapter(
 
             holder.mFixedNo = myView.findViewById(R.id.tv_fixed_no) as TextView
             holder.mRandomNo = myView.findViewById(R.id.tv_random_no) as TextView
+            holder.mCardView = myView.findViewById(R.id.cv_fixed_no) as MaterialCardView
 
             myView.tag = holder
         } else {
@@ -50,25 +52,34 @@ class GridViewAdapter(
                     R.color.color_white
                 )
             )
+            holder.mCardView?.strokeColor = ContextCompat.getColor(context, R.color.color_white)
             holder.mFixedNo?.setTextColor(ContextCompat.getColor(context, R.color.primary_text))
         }
 
         if (alteredNumberArray[0] == 0) {
-            if (position == alteredNumberArray[1] || position == alteredNumberArray[2] || position == alteredNumberArray[3] || position == alteredNumberArray[4])
+            if (position == alteredNumberArray[1] || position == alteredNumberArray[2] || position == alteredNumberArray[3] || position == alteredNumberArray[4]) {
                 holder.mFixedNo?.setBackgroundColor(
                     ContextCompat.getColor(
                         context,
                         R.color.colorRowSwap
                     )
                 )
+                holder.mCardView?.strokeColor =
+                    ContextCompat.getColor(context, R.color.colorRowSwap)
+                holder.mFixedNo?.setTextColor(ContextCompat.getColor(context, R.color.color_white))
+            }
         } else if (alteredNumberArray[0] == 1) {
-            if (position == alteredNumberArray[1] || position == alteredNumberArray[2] || position == alteredNumberArray[3] || position == alteredNumberArray[4])
+            if (position == alteredNumberArray[1] || position == alteredNumberArray[2] || position == alteredNumberArray[3] || position == alteredNumberArray[4]) {
                 holder.mFixedNo?.setBackgroundColor(
                     ContextCompat.getColor(
                         context,
                         R.color.colorColumnSwap
                     )
                 )
+                holder.mCardView?.strokeColor =
+                    ContextCompat.getColor(context, R.color.colorColumnSwap)
+                holder.mFixedNo?.setTextColor(ContextCompat.getColor(context, R.color.color_white))
+            }
         }
 
         return myView!!
@@ -90,5 +101,6 @@ class GridViewAdapter(
     class ViewHolder {
         var mFixedNo: TextView? = null
         var mRandomNo: TextView? = null
+        var mCardView: MaterialCardView? = null
     }
 }

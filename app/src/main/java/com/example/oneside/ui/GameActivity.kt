@@ -1,16 +1,20 @@
 package com.example.oneside.ui
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Adapter
 import androidx.constraintlayout.widget.ConstraintSet
 import com.example.oneside.R
 import com.example.oneside.adapter.GridViewAdapter
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_game.*
+import kotlinx.android.synthetic.main.item_solution_dialog.*
 
 
 class GameActivity : BaseActivity(), View.OnClickListener {
@@ -58,8 +62,7 @@ class GameActivity : BaseActivity(), View.OnClickListener {
             getMovesCount()
         } else {
             movesCount = 0
-            val steps = "Moves: $movesCount"
-            tv_no_of_steps.text = steps
+            tv_no_of_steps.text = movesCount.toString()
             for (i in 1..9)
                 randomArray.add(i)
             for (i in 1..9)
@@ -118,9 +121,8 @@ class GameActivity : BaseActivity(), View.OnClickListener {
 
     private fun getMovesCount() {
         val steps = sharedPreferences?.getInt("Moves", 0)
-        val moves = "Moves: $steps"
         movesCount = steps!!.toInt()
-        tv_no_of_steps.text = moves
+        tv_no_of_steps.text = steps.toString()
     }
 
     private fun getFixedArray() {
@@ -237,8 +239,21 @@ class GameActivity : BaseActivity(), View.OnClickListener {
                 (adapter as GridViewAdapter).notifyDataSetChanged()
             }
             btn_solution -> {
-                val intent = Intent(this, SolutionActivity::class.java)
-                startActivity(intent)
+                val viewGroup: ViewGroup? = null
+                val dialogView =
+                    LayoutInflater.from(this).inflate(R.layout.item_solution_dialog, viewGroup, false)
+                val builder =
+                    AlertDialog.Builder(this).setView(dialogView).setTitle("Are you sure?")
+
+                val alertDialog = builder.show()
+                alertDialog.btn_no.setOnClickListener {
+                    alertDialog.dismiss()
+                }
+                alertDialog.btn_yes.setOnClickListener {
+                    val intent = Intent(this, SolutionActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
             }
             ib_settings -> {
                 val intent = Intent(this, ResumeActivity::class.java)
@@ -249,8 +264,7 @@ class GameActivity : BaseActivity(), View.OnClickListener {
 
     private fun updateMovesCount() {
         movesCount++
-        val steps = "Moves: $movesCount"
-        tv_no_of_steps.text = steps
+        tv_no_of_steps.text = movesCount.toString()
         editor?.putInt("Moves", movesCount)
         editor?.apply()
     }

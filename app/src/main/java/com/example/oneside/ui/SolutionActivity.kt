@@ -25,6 +25,7 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
     private var sharedRandomArray: String? = null
     private val preferenceKey = "PREFERENCE_FILE_KEY"
     private var sharedPreferences: SharedPreferences? = null
+    private var editor: SharedPreferences.Editor? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +34,8 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
         supportActionBar?.hide()
 
         sharedPreferences = this.getSharedPreferences(preferenceKey, Context.MODE_PRIVATE)
+        editor = sharedPreferences?.edit()
+        editor?.apply()
 
         for (i in 1..9)
             fixedArray.add(i)
@@ -43,6 +46,9 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
         getRandomArray()
         getSiteArray()
         getDirectionArray()
+
+        editor?.clear()
+        editor?.apply()
 
         val steps = "Moves: " + "0/" + swapSite.size
         tv_no_of_steps.text = steps
