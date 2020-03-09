@@ -11,7 +11,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp_16"
-        android:background="@drawable/light_curve_outline"
         android:fontFamily="@font/museo_sans_500"
         android:minWidth="@dimen/dp_144"
         android:paddingStart="@dimen/dp_16"
@@ -20,7 +19,7 @@
         android:paddingBottom="@dimen/dp_8"
         android:text="@string/no_of_steps"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/primary_text"
         android:textSize="@dimen/sp_20"
         app:layout_constraintBottom_toTopOf="@id/rl_matrix"
         app:layout_constraintEnd_toEndOf="parent"
@@ -124,7 +123,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_new_game"
-        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_16"
@@ -144,6 +143,8 @@
         app:cornerRadius="@dimen/dp_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@color/colorPrimary"
+        app:strokeWidth="0.5dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

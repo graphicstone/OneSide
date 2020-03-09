@@ -3,10 +3,13 @@ package com.example.oneside.ui
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import com.example.oneside.R
 
 
 abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+//        setTheme(R.style.DarkTheme)
         super.onCreate(savedInstanceState)
         enableImmersiveMode()
     }

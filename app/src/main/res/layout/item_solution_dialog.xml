@@ -22,10 +22,12 @@
         android:id="@+id/btn_no"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_marginTop="@dimen/dp_16"
         android:backgroundTint="@color/color_white"
         android:text="@string/no"
         android:textColor="@color/colorPrimary"
+        app:strokeColor="@color/colorPrimary"
         app:layout_constraintEnd_toStartOf="@id/btn_yes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_solution_dialog" />

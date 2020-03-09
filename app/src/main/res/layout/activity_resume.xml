@@ -77,12 +77,16 @@
             android:layout_marginStart="@dimen/dp_24"
             android:layout_marginTop="@dimen/dp_24"
             android:layout_marginEnd="@dimen/dp_24"
+            android:backgroundTint="@color/color_white"
+            android:elevation="6dp"
             android:fontFamily="@font/museo_sans_500"
             android:padding="@dimen/dp_16"
             android:text="@string/resume"
+            android:textColor="@color/primary_text"
             android:textSize="@dimen/sp_20"
             app:cornerRadius="@dimen/dp_32"
-            app:strokeColor="@color/colorPrimary" />
+            app:strokeColor="#d0dee9"
+            app:strokeWidth="1dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_new_game"
@@ -92,12 +96,16 @@
             android:layout_marginStart="@dimen/dp_24"
             android:layout_marginTop="@dimen/dp_24"
             android:layout_marginEnd="@dimen/dp_24"
+            android:backgroundTint="@color/color_white"
+            android:elevation="6dp"
             android:fontFamily="@font/museo_sans_500"
             android:padding="@dimen/dp_16"
             android:text="@string/new_game"
+            android:textColor="@color/primary_text"
             android:textSize="@dimen/sp_20"
             app:cornerRadius="@dimen/dp_32"
-            app:strokeColor="@color/colorPrimary" />
+            app:strokeColor="#d0dee9"
+            app:strokeWidth="1dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_how_to_play"
@@ -107,12 +115,16 @@
             android:layout_marginStart="@dimen/dp_24"
             android:layout_marginTop="@dimen/dp_24"
             android:layout_marginEnd="@dimen/dp_24"
+            android:backgroundTint="@color/color_white"
+            android:elevation="6dp"
             android:fontFamily="@font/museo_sans_500"
             android:padding="@dimen/dp_16"
             android:text="@string/how_to_play"
+            android:textColor="@color/primary_text"
             android:textSize="@dimen/sp_20"
             app:cornerRadius="@dimen/dp_32"
-            app:strokeColor="@color/colorPrimary" />
+            app:strokeColor="#d0dee9"
+            app:strokeWidth="1dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_about"
@@ -122,12 +134,16 @@
             android:layout_marginStart="@dimen/dp_24"
             android:layout_marginTop="@dimen/dp_24"
             android:layout_marginEnd="@dimen/dp_24"
+            android:backgroundTint="@color/color_white"
+            android:elevation="6dp"
             android:fontFamily="@font/museo_sans_500"
             android:padding="@dimen/dp_16"
             android:text="@string/about"
+            android:textColor="@color/primary_text"
             android:textSize="@dimen/sp_20"
             app:cornerRadius="@dimen/dp_32"
-            app:strokeColor="@color/colorPrimary" />
+            app:strokeColor="#d0dee9"
+            app:strokeWidth="1dp" />
 
     </LinearLayout>
 

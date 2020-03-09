@@ -24,11 +24,13 @@ class ResumeActivity : BaseActivity(), View.OnClickListener {
 
         btn_resume.setOnClickListener(this)
         btn_new_game.setOnClickListener(this)
+        btn_how_to_play.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
         when (view) {
             btn_resume -> {
+                application.setTheme(R.style.DarkTheme)
                 onBackPressed()
             }
             btn_new_game -> {
@@ -38,6 +40,10 @@ class ResumeActivity : BaseActivity(), View.OnClickListener {
                 val intent = Intent(this, LevelActivity::class.java)
                 startActivity(intent)
                 finish()
+            }
+            btn_how_to_play -> {
+                val intent = Intent(this, HowToPlayActivity::class.java)
+                startActivity(intent)
             }
         }
     }

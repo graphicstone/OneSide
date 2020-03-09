@@ -12,9 +12,12 @@ import android.widget.Adapter
 import androidx.constraintlayout.widget.ConstraintSet
 import com.example.oneside.R
 import com.example.oneside.adapter.GridViewAdapter
+import com.example.oneside.callback.ViewCallback
+import com.example.oneside.utilities.VariableAndMethodUtility
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.item_solution_dialog.*
+import kotlinx.android.synthetic.main.item_winning_dialog.view.*
 
 
 class GameActivity : BaseActivity(), View.OnClickListener {
@@ -202,19 +205,27 @@ class GameActivity : BaseActivity(), View.OnClickListener {
                 updateMovesCount()
                 rotateGrid(0, 1, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
+                if(checkWinningState())
+                    completeGame()
             }
             civ_2_btn -> {
                 updateMovesCount()
                 rotateGrid(1, 1, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
+                if(checkWinningState())
+                    completeGame()
             }
             civ_3_btn -> {
                 updateMovesCount()
                 rotateGrid(1, 0, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
+                if(checkWinningState())
+                    completeGame()
             }
             civ_4_btn -> {
                 updateMovesCount()
+                if(checkWinningState())
+                    completeGame()
                 rotateGrid(4, 0, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
             }
@@ -222,28 +233,36 @@ class GameActivity : BaseActivity(), View.OnClickListener {
                 updateMovesCount()
                 rotateGrid(4, 1, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
+                if(checkWinningState())
+                    completeGame()
             }
             civ_6_btn -> {
                 updateMovesCount()
                 rotateGrid(3, 1, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
+                if(checkWinningState())
+                    completeGame()
             }
             civ_7_btn -> {
                 updateMovesCount()
                 rotateGrid(3, 0, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
+                if(checkWinningState())
+                    completeGame()
             }
             civ_8_btn -> {
                 updateMovesCount()
                 rotateGrid(0, 0, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
+                if(checkWinningState())
+                    completeGame()
             }
             btn_solution -> {
                 val viewGroup: ViewGroup? = null
                 val dialogView =
                     LayoutInflater.from(this).inflate(R.layout.item_solution_dialog, viewGroup, false)
                 val builder =
-                    AlertDialog.Builder(this).setView(dialogView).setTitle("Are you sure?")
+                    AlertDialog.Builder(this).setView(dialogView)
 
                 val alertDialog = builder.show()
                 alertDialog.btn_no.setOnClickListener {
@@ -260,6 +279,30 @@ class GameActivity : BaseActivity(), View.OnClickListener {
                 startActivity(intent)
             }
         }
+    }
+
+    private fun completeGame() {
+        VariableAndMethodUtility.customDialog(this, R.layout.item_winning_dialog, object : ViewCallback {
+            override fun onSuccess(view: View, dialog: AlertDialog) {
+                view.btn_new_game.setOnClickListener{
+                    editor?.clear()
+                    editor?.apply()
+                    val intent = Intent(this@GameActivity, LandingActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                dialog.show()
+                dialog.window?.setLayout(600, 800)
+            }
+        })
+    }
+
+    private fun checkWinningState(): Boolean {
+        for(i in 0 until randomArray.size)
+            if(randomArray[i] != fixedArray[i]) {
+                return false
+            }
+        return true
     }
 
     private fun updateMovesCount() {

@@ -21,4 +21,5 @@
     <string name="see_solution_dialog">If you are seeing the solution, then you won\'t be able to continue with the same puzzle. Are you sure you want to see the solution?</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
+    <string name="winning_screen">Winning screen</string>
 </resources>
