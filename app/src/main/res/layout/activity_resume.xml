@@ -6,58 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".ui.ResumeActivity">
 
-    <LinearLayout
-        android:id="@+id/ll_app_name"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/tv_app_name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_16"
+        android:drawableStart="@drawable/ic_round_icon_48dp"
+        android:drawablePadding="@dimen/dp_16"
+        android:fontFamily="@font/pacifico"
         android:gravity="center"
-        android:orientation="horizontal"
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/sp_32"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:layout_width="@dimen/dp_48"
-            android:layout_height="@dimen/dp_48"
-            android:contentDescription="@string/app_logo"
-            android:src="@drawable/ic_round_icon" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_16">
-
-            <TextView
-                android:id="@+id/tv_app_name_shadow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:alpha="0.2"
-                android:fontFamily="@font/pacifico"
-                android:text="@string/app_name"
-                android:textColor="#448CCB"
-                android:textSize="@dimen/sp_32"
-                android:translationX="4dp"
-                android:translationY="-4dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_app_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/pacifico"
-                android:text="@string/app_name"
-                android:textColor="#155892"
-                android:textSize="@dimen/sp_32"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,7 +30,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_app_name">
+        app:layout_constraintTop_toBottomOf="@id/tv_app_name">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_resume"
@@ -82,6 +45,7 @@
             android:fontFamily="@font/museo_sans_500"
             android:padding="@dimen/dp_16"
             android:text="@string/resume"
+            android:textAllCaps="false"
             android:textColor="@color/primary_text"
             android:textSize="@dimen/sp_20"
             app:cornerRadius="@dimen/dp_32"
@@ -101,6 +65,7 @@
             android:fontFamily="@font/museo_sans_500"
             android:padding="@dimen/dp_16"
             android:text="@string/new_game"
+            android:textAllCaps="false"
             android:textColor="@color/primary_text"
             android:textSize="@dimen/sp_20"
             app:cornerRadius="@dimen/dp_32"
@@ -120,6 +85,7 @@
             android:fontFamily="@font/museo_sans_500"
             android:padding="@dimen/dp_16"
             android:text="@string/how_to_play"
+            android:textAllCaps="false"
             android:textColor="@color/primary_text"
             android:textSize="@dimen/sp_20"
             app:cornerRadius="@dimen/dp_32"
@@ -139,6 +105,7 @@
             android:fontFamily="@font/museo_sans_500"
             android:padding="@dimen/dp_16"
             android:text="@string/about"
+            android:textAllCaps="false"
             android:textColor="@color/primary_text"
             android:textSize="@dimen/sp_20"
             app:cornerRadius="@dimen/dp_32"

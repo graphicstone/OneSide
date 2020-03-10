@@ -163,4 +163,10 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
     private fun swapNumbers(i: Int, j: Int) {
         fixedArray[i] = fixedArray[j].also { fixedArray[j] = fixedArray[i] }
     }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, LandingActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 }

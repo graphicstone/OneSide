@@ -8,40 +8,18 @@
     android:orientation="vertical"
     tools:context=".ui.LandingActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <TextView
+        android:id="@+id/tv_app_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/tv_app_name_shadow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:alpha="0.2"
-            android:fontFamily="@font/pacifico"
-            android:text="@string/app_name"
-            android:textAlignment="center"
-            android:textColor="#448CCB"
-            android:textSize="@dimen/sp_72"
-            android:translationX="4dp"
-            android:translationY="-4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_app_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/pacifico"
-            android:text="@string/app_name"
-            android:textAlignment="center"
-            android:textColor="#155892"
-            android:textSize="@dimen/sp_72"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pacifico"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="#155892"
+        android:textSize="@dimen/sp_72"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_new_game"
@@ -56,6 +34,7 @@
         android:fontFamily="@font/museo_sans_500"
         android:padding="@dimen/dp_16"
         android:text="@string/new_game"
+        android:textAllCaps="false"
         android:textColor="@color/primary_text"
         android:textSize="@dimen/sp_20"
         app:cornerRadius="@dimen/dp_32"
@@ -75,6 +54,7 @@
         android:fontFamily="@font/museo_sans_500"
         android:padding="@dimen/dp_16"
         android:text="@string/how_to_play"
+        android:textAllCaps="false"
         android:textColor="@color/primary_text"
         android:textSize="@dimen/sp_20"
         app:cornerRadius="@dimen/dp_32"
@@ -94,6 +74,7 @@
         android:fontFamily="@font/museo_sans_500"
         android:padding="@dimen/dp_16"
         android:text="@string/about"
+        android:textAllCaps="false"
         android:textColor="@color/primary_text"
         android:textSize="@dimen/sp_20"
         app:cornerRadius="@dimen/dp_32"

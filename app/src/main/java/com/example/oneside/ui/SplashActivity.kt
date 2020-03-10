@@ -45,7 +45,6 @@ class SplashActivity : BaseActivity() {
         mDelayHandler!!.postDelayed(mRunnable, mSplashTimeOut)
 
         iv_app_logo.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in))
-        tv_app_name.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in))
     }
 
     override fun onDestroy() {

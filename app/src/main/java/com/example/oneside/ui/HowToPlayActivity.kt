@@ -1,6 +1,5 @@
 package com.example.oneside.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import com.example.oneside.R
@@ -11,9 +10,9 @@ class HowToPlayActivity : BaseActivity(), ImageListener {
 
     private var sampleImages = intArrayOf(
         R.drawable.screen_1,
-        R.drawable.column_swap,
-        R.drawable.initial_game_screen,
-        R.drawable.solution_screen
+        R.drawable.screen_2,
+        R.drawable.screen_3,
+        R.drawable.screen_4
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

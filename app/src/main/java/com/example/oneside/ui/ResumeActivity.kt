@@ -25,6 +25,7 @@ class ResumeActivity : BaseActivity(), View.OnClickListener {
         btn_resume.setOnClickListener(this)
         btn_new_game.setOnClickListener(this)
         btn_how_to_play.setOnClickListener(this)
+        btn_about.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
@@ -43,6 +44,10 @@ class ResumeActivity : BaseActivity(), View.OnClickListener {
             }
             btn_how_to_play -> {
                 val intent = Intent(this, HowToPlayActivity::class.java)
+                startActivity(intent)
+            }
+            btn_about -> {
+                val intent = Intent(this, AboutActivity::class.java)
                 startActivity(intent)
             }
         }

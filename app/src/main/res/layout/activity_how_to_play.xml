@@ -16,10 +16,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:pageColor="#00000000"
-        app:pageTransformer="zoom"
-        app:radius="8dp"
-        app:slideInterval="5000"
+        app:pageTransformer="slide_over"
+        app:radius="5dp"
+        app:slideInterval="8000"
         app:strokeColor="@color/colorPrimary"
-        app:strokeWidth="2dp" />
+        app:strokeWidth="1dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

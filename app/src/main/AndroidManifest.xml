@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_round_app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.AboutActivity" />
         <activity android:name=".ui.HowToPlayActivity" />
         <activity android:name=".ui.ResumeActivity" />
         <activity android:name=".ui.LandingActivity" />

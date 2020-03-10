@@ -5,9 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Adapter
 import androidx.constraintlayout.widget.ConstraintSet
 import com.example.oneside.R
@@ -16,7 +14,7 @@ import com.example.oneside.callback.ViewCallback
 import com.example.oneside.utilities.VariableAndMethodUtility
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_game.*
-import kotlinx.android.synthetic.main.item_solution_dialog.*
+import kotlinx.android.synthetic.main.item_solution_dialog.view.*
 import kotlinx.android.synthetic.main.item_winning_dialog.view.*
 
 
@@ -205,74 +203,76 @@ class GameActivity : BaseActivity(), View.OnClickListener {
                 updateMovesCount()
                 rotateGrid(0, 1, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
-                if(checkWinningState())
+                if (checkWinningState())
                     completeGame()
             }
             civ_2_btn -> {
                 updateMovesCount()
                 rotateGrid(1, 1, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
-                if(checkWinningState())
+                if (checkWinningState())
                     completeGame()
             }
             civ_3_btn -> {
                 updateMovesCount()
                 rotateGrid(1, 0, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
-                if(checkWinningState())
+                if (checkWinningState())
                     completeGame()
             }
             civ_4_btn -> {
                 updateMovesCount()
-                if(checkWinningState())
-                    completeGame()
                 rotateGrid(4, 0, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
+                if (checkWinningState())
+                    completeGame()
             }
             civ_5_btn -> {
                 updateMovesCount()
                 rotateGrid(4, 1, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
-                if(checkWinningState())
+                if (checkWinningState())
                     completeGame()
             }
             civ_6_btn -> {
                 updateMovesCount()
                 rotateGrid(3, 1, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
-                if(checkWinningState())
+                if (checkWinningState())
                     completeGame()
             }
             civ_7_btn -> {
                 updateMovesCount()
                 rotateGrid(3, 0, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
-                if(checkWinningState())
+                if (checkWinningState())
                     completeGame()
             }
             civ_8_btn -> {
                 updateMovesCount()
                 rotateGrid(0, 0, true)
                 (adapter as GridViewAdapter).notifyDataSetChanged()
-                if(checkWinningState())
+                if (checkWinningState())
                     completeGame()
             }
             btn_solution -> {
-                val viewGroup: ViewGroup? = null
-                val dialogView =
-                    LayoutInflater.from(this).inflate(R.layout.item_solution_dialog, viewGroup, false)
-                val builder =
-                    AlertDialog.Builder(this).setView(dialogView)
+                VariableAndMethodUtility.customClosableDialog(
+                    this,
+                    R.layout.item_solution_dialog,
+                    object : ViewCallback {
+                        override fun onSuccess(view: View, dialog: AlertDialog) {
+                            view.btn_yes.setOnClickListener {
+                                val intent = Intent(this@GameActivity, SolutionActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
+                            view.btn_no.setOnClickListener {
+                                dialog.dismiss()
+                            }
+                            dialog.show()
+                        }
 
-                val alertDialog = builder.show()
-                alertDialog.btn_no.setOnClickListener {
-                    alertDialog.dismiss()
-                }
-                alertDialog.btn_yes.setOnClickListener {
-                    val intent = Intent(this, SolutionActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
+                    })
             }
             ib_settings -> {
                 val intent = Intent(this, ResumeActivity::class.java)
@@ -282,24 +282,27 @@ class GameActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun completeGame() {
-        VariableAndMethodUtility.customDialog(this, R.layout.item_winning_dialog, object : ViewCallback {
-            override fun onSuccess(view: View, dialog: AlertDialog) {
-                view.btn_new_game.setOnClickListener{
-                    editor?.clear()
-                    editor?.apply()
-                    val intent = Intent(this@GameActivity, LandingActivity::class.java)
-                    startActivity(intent)
-                    finish()
+        VariableAndMethodUtility.customDialog(
+            this,
+            R.layout.item_winning_dialog,
+            object : ViewCallback {
+                override fun onSuccess(view: View, dialog: AlertDialog) {
+                    view.btn_new_game.setOnClickListener {
+                        editor?.clear()
+                        editor?.apply()
+                        val intent = Intent(this@GameActivity, LandingActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                    dialog.show()
+                    dialog.window?.setLayout(600, 800)
                 }
-                dialog.show()
-                dialog.window?.setLayout(600, 800)
-            }
-        })
+            })
     }
 
     private fun checkWinningState(): Boolean {
-        for(i in 0 until randomArray.size)
-            if(randomArray[i] != fixedArray[i]) {
+        for (i in 0 until randomArray.size)
+            if (randomArray[i] != fixedArray[i]) {
                 return false
             }
         return true
