@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".ui.LandingActivity">
+    tools:context=".ui.activities.LandingActivity">
 
     <TextView
         android:id="@+id/tv_app_name"

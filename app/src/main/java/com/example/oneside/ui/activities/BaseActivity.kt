@@ -1,4 +1,4 @@
-package com.example.oneside.ui
+package com.example.oneside.ui.activities
 
 import android.os.Bundle
 import android.view.View

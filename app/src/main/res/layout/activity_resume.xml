@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ResumeActivity">
+    tools:context=".ui.activities.ResumeActivity">
 
     <TextView
         android:id="@+id/tv_app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_16"
-        android:drawableStart="@drawable/ic_round_icon_48dp"
+        android:drawableStart="@drawable/ic_round_app_48dp"
         android:drawablePadding="@dimen/dp_16"
         android:fontFamily="@font/pacifico"
         android:gravity="center"

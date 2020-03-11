@@ -7,7 +7,7 @@
     android:background="#FAFAFA"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".ui.LevelActivity">
+    tools:context=".ui.activities.LevelActivity">
 
     <TextView
         android:id="@+id/tv_app_name"

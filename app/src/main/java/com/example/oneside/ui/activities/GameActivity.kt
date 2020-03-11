@@ -1,4 +1,4 @@
-package com.example.oneside.ui
+package com.example.oneside.ui.activities
 
 import android.app.AlertDialog
 import android.content.Context

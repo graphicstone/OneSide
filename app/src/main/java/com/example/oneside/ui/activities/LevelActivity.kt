@@ -1,4 +1,4 @@
-package com.example.oneside.ui
+package com.example.oneside.ui.activities
 
 import android.content.Context
 import android.content.Intent

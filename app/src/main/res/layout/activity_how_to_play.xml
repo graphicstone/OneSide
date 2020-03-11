@@ -1,25 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.HowToPlayActivity">
+    android:background="@color/colorWhiteBackground"
+    tools:context=".ui.activities.HowToPlayActivity">
 
-    <com.synnapps.carouselview.CarouselView
-        android:id="@+id/carousalView"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/myViewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:fillColor="@color/colorPrimaryLight"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:pageColor="#00000000"
-        app:pageTransformer="slide_over"
-        app:radius="5dp"
-        app:slideInterval="8000"
-        app:strokeColor="@color/colorPrimary"
-        app:strokeWidth="1dp" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/viewPagerIndicatorIconsLayout"
+        android:layout_marginBottom="10dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/viewPagerIndicatorIconsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhiteBackground"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/firstDotImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_current_position" />
+
+        <ImageView
+            android:id="@+id/secondDotImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_disabled_position" />
+
+        <ImageView
+            android:id="@+id/thirdDotImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_disabled_position" />
+
+        <ImageView
+            android:id="@+id/fourthDotImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_disabled_position" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_round_app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.AboutActivity" />
-        <activity android:name=".ui.HowToPlayActivity" />
-        <activity android:name=".ui.ResumeActivity" />
-        <activity android:name=".ui.LandingActivity" />
-        <activity android:name=".ui.SplashActivity">
+        <activity android:name=".ui.activities.AboutActivity" />
+        <activity android:name=".ui.activities.HowToPlayActivity" />
+        <activity android:name=".ui.activities.ResumeActivity" />
+        <activity android:name=".ui.activities.LandingActivity" />
+        <activity android:name=".ui.activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -21,9 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.LevelActivity" />
-        <activity android:name=".ui.SolutionActivity" />
-        <activity android:name=".ui.GameActivity" />
+        <activity android:name=".ui.activities.LevelActivity" />
+        <activity android:name=".ui.activities.SolutionActivity" />
+        <activity android:name=".ui.activities.GameActivity" />
     </application>
 
 </manifest>

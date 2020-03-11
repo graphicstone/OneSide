@@ -6,7 +6,7 @@
     android:background="@drawable/splash_gradient"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".ui.SplashActivity">
+    tools:context=".ui.activities.SplashActivity">
 
     <ImageView
         android:id="@+id/iv_app_logo"
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/app_name"
         android:elevation="@dimen/dp_16"
-        android:src="@drawable/ic_round_icon" />
+        android:src="@drawable/ic_round_app_icon" />
 
     <TextView
         android:id="@+id/tv_app_name"
