@@ -2,15 +2,13 @@ package com.example.oneside.ui.activities
 
 import android.os.Bundle
 import android.view.View
-import android.view.Window
-import android.view.WindowManager
 import androidx.viewpager.widget.ViewPager
 import com.example.oneside.R
 import com.example.oneside.adapter.ViewPagerAdapter
-import com.example.oneside.ui.fragments.SecondScreenFragment
-import com.example.oneside.ui.fragments.ThirdScreenFragment
 import com.example.oneside.ui.fragments.FirstScreenFragment
 import com.example.oneside.ui.fragments.FourthScreenFragment
+import com.example.oneside.ui.fragments.SecondScreenFragment
+import com.example.oneside.ui.fragments.ThirdScreenFragment
 import kotlinx.android.synthetic.main.activity_how_to_play.*
 import kotlin.math.abs
 import kotlin.math.max
@@ -28,6 +26,7 @@ class HowToPlayActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.activity_how_to_play)
+
         pagerAdapterView = ViewPagerAdapter(supportFragmentManager)
         addPagerFragments()
         myViewPager.adapter = pagerAdapterView

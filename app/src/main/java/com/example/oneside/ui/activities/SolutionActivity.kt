@@ -91,8 +91,7 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         if (view == civ_prev_btn) {
             if (position > 0) {
-                position--
-                val steps: String = "Moves: " + (position + 1).toString() + "/" + swapSite.size
+                val steps: String = "Moves: " + (--position).toString() + "/" + swapSite.size
                 tv_no_of_steps.text = steps
                 when (swapSite[position]) {
                     0 ->
