@@ -28,8 +28,8 @@ class AboutActivity : BaseActivity() {
         developerNameList.add("Shubhesh Dwivedi")
         developerNameList.add("Vishal Verma")
 
-        developerDescList.add("What the hell have you done")
-        developerDescList.add("What the hell have you done")
-        developerDescList.add("What the hell have you done")
+        developerDescList.add("Android Developer")
+        developerDescList.add("Web Developer")
+        developerDescList.add("Designer")
     }
 }

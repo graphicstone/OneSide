@@ -73,7 +73,7 @@
         android:layout_marginBottom="@dimen/dp_16"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/btn_new_game"
+        app:layout_constraintBottom_toTopOf="@id/btn_play_again"
         app:layout_constraintEnd_toStartOf="@id/ll_column_swap"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -101,7 +101,7 @@
         android:layout_marginBottom="@dimen/dp_16"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/btn_new_game"
+        app:layout_constraintBottom_toTopOf="@id/btn_play_again"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ll_row_swap">
 
@@ -122,7 +122,7 @@
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_new_game"
+        android:id="@+id/btn_play_again"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

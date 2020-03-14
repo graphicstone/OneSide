@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Adapter
 import androidx.constraintlayout.widget.ConstraintSet
@@ -36,6 +37,7 @@ class GameActivity : BaseActivity(), View.OnClickListener {
     private var editor: SharedPreferences.Editor? = null
     private val gson = Gson()
     private var adapter: Adapter? = null
+    private var doubleBackToExitPressedOnce = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -287,7 +289,14 @@ class GameActivity : BaseActivity(), View.OnClickListener {
             R.layout.item_winning_dialog,
             object : ViewCallback {
                 override fun onSuccess(view: View, dialog: AlertDialog) {
-                    view.btn_new_game.setOnClickListener {
+                    view.btn_play_again.setOnClickListener {
+                        editor?.clear()
+                        editor?.apply()
+                        val intent = Intent(this@GameActivity, LevelActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                    view.btn_home.setOnClickListener {
                         editor?.clear()
                         editor?.apply()
                         val intent = Intent(this@GameActivity, LandingActivity::class.java)
@@ -295,7 +304,7 @@ class GameActivity : BaseActivity(), View.OnClickListener {
                         finish()
                     }
                     dialog.show()
-                    dialog.window?.setLayout(600, 800)
+                    dialog.window?.setLayout(600, 700)
                 }
             })
     }
@@ -313,5 +322,19 @@ class GameActivity : BaseActivity(), View.OnClickListener {
         tv_no_of_steps.text = movesCount.toString()
         editor?.putInt("Moves", movesCount)
         editor?.apply()
+    }
+
+    override fun onBackPressed() {
+        if (isTaskRoot) {
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed()
+                finishAffinity()
+                return
+            }
+            this.doubleBackToExitPressedOnce = true
+            VariableAndMethodUtility.showSnackbar(this, "Press back again to exit.")
+            Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
+        } else
+            super.onBackPressed()
     }
 }

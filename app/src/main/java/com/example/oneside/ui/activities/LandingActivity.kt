@@ -18,14 +18,14 @@ class LandingActivity : BaseActivity(), View.OnClickListener {
 
         supportActionBar?.hide()
 
-        btn_new_game.setOnClickListener(this)
+        btn_play_again.setOnClickListener(this)
         btn_how_to_play.setOnClickListener(this)
         btn_about.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
         when (view) {
-            btn_new_game -> {
+            btn_play_again -> {
                 val intent = Intent(this, LevelActivity::class.java)
                 startActivity(intent)
             }

@@ -22,7 +22,7 @@
     <string name="no">No</string>
     <string name="yes">Yes</string>
     <string name="winning_screen">Winning screen</string>
-    <string name="credits">Credits</string>
+    <string name="contributors">Contributors</string>
     <string name="harishiv_singh">Harishiv Singh</string>
     <string name="user_description">What the hell did you do?</string>
     <string name="shubhesh_dwivedi">Shubhesh Dwivedi</string>
@@ -32,5 +32,13 @@
     <string name="third_screen_text">Blue colour represents a row swap</string>
     <string name="fourth_screen_text">Pink colour represents a column swap</string>
     <string name="grid_info">Grid info</string>
+    <string name="game_desc">OneSide is an open-source puzzle game developed to fuck with your mind. You can also play the same game on website.</string>
+    <string name="app_info">App Info</string>
+    <string name="home_screen">Home Screen</string>
+    <string name="play_game">Play Game</string>
+    <string name="you_did_it">You did it!</string>
+    <string name="github_link">https://github.com/graphicstone/OneSide</string>
+    <string name="version_1_0">Version 1.0</string>
+    <string name="website_link">https://oneside-9af7d.firebaseapp.com</string>
 
 </resources>

@@ -23,7 +23,7 @@ class ResumeActivity : BaseActivity(), View.OnClickListener {
         sharedPreferences = this.getSharedPreferences(preferenceKey, Context.MODE_PRIVATE)
 
         btn_resume.setOnClickListener(this)
-        btn_new_game.setOnClickListener(this)
+        btn_play_again.setOnClickListener(this)
         btn_how_to_play.setOnClickListener(this)
         btn_about.setOnClickListener(this)
     }
@@ -34,7 +34,7 @@ class ResumeActivity : BaseActivity(), View.OnClickListener {
                 application.setTheme(R.style.DarkTheme)
                 onBackPressed()
             }
-            btn_new_game -> {
+            btn_play_again -> {
                 editor = sharedPreferences?.edit()
                 editor?.clear()
                 editor?.apply()

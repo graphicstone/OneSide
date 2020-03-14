@@ -32,4 +32,6 @@
     <dimen name="sp_40">40sp</dimen>
     <dimen name="sp_64">64sp</dimen>
     <dimen name="sp_72">72sp</dimen>
+    <dimen name="dp_44">44dp</dimen>
+    <dimen name="sp_45">45sp</dimen>
 </resources>

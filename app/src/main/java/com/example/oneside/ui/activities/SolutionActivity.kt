@@ -58,7 +58,7 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
 
         civ_prev_btn.setOnClickListener(this)
         civ_next_btn.setOnClickListener(this)
-        btn_new_game.setOnClickListener(this)
+        btn_play_again.setOnClickListener(this)
     }
 
     private fun getRandomArray() {
@@ -122,7 +122,7 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
                 position++
             } else
                 Toast.makeText(this, "Last position", Toast.LENGTH_SHORT).show()
-        } else if (view == btn_new_game) {
+        } else if (view == btn_play_again) {
             val intent = Intent(this, LevelActivity::class.java)
             startActivity(intent)
             finish()
