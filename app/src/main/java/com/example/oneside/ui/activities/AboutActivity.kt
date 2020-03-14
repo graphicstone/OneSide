@@ -1,12 +1,14 @@
 package com.example.oneside.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.oneside.R
 import com.example.oneside.adapter.DeveloperCardAdapter
 import kotlinx.android.synthetic.main.activity_about.*
 
-class AboutActivity : BaseActivity() {
+class AboutActivity : BaseActivity(), View.OnClickListener {
 
     private val developerNameList: ArrayList<String> = ArrayList()
     private val developerDescList: ArrayList<String> = ArrayList()
@@ -21,6 +23,9 @@ class AboutActivity : BaseActivity() {
 
         rv_developer_info.layoutManager = LinearLayoutManager(this)
         rv_developer_info.adapter = DeveloperCardAdapter(developerNameList, developerDescList)
+
+        tv_github_link.setOnClickListener(this)
+        tv_website_link.setOnClickListener(this)
     }
 
     private fun initList() {
@@ -31,5 +36,17 @@ class AboutActivity : BaseActivity() {
         developerDescList.add("Android Developer")
         developerDescList.add("Web Developer")
         developerDescList.add("Designer")
+    }
+
+    override fun onClick(view: View?) {
+        if(view == tv_github_link) {
+            val intent = Intent(this, WebViewActivity::class.java)
+            intent.putExtra("URL", "Github")
+            startActivity(intent)
+        } else {
+            val intent = Intent(this, WebViewActivity::class.java)
+            intent.putExtra("URL", "Website")
+            startActivity(intent)
+        }
     }
 }

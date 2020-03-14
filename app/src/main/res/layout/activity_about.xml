@@ -57,34 +57,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_website_link"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_16"
-            android:layout_marginTop="@dimen/dp_8"
-            android:fontFamily="@font/museo_sans_300"
-            android:text="@string/website_link"
-            android:textColor="@color/primary_text"
-            android:textSize="@dimen/sp_16"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/civ_app_logo"
-            app:layout_constraintTop_toBottomOf="@id/tv_game_desc" />
-
-        <TextView
-            android:id="@+id/tv_github_link"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_16"
-            android:layout_marginTop="@dimen/dp_16"
-            android:fontFamily="@font/museo_sans_300"
-            android:text="@string/github_link"
-            android:textColor="@color/primary_text"
-            android:textSize="@dimen/sp_16"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/civ_app_logo"
-            app:layout_constraintTop_toBottomOf="@id/tv_website_link" />
-
-        <TextView
             android:id="@+id/tv_version"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -96,9 +68,60 @@
             android:textSize="@dimen/sp_16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/civ_app_logo"
-            app:layout_constraintTop_toBottomOf="@id/tv_github_link" />
+            app:layout_constraintTop_toBottomOf="@id/tv_game_desc" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/dp_16"
+        android:paddingEnd="@dimen/dp_16">
+
+        <TextView
+            android:id="@+id/tv_website_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:background="@drawable/light_curve_outline"
+            android:drawableStart="@drawable/ic_public_black_24dp"
+            android:drawablePadding="@dimen/dp_8"
+            android:fontFamily="@font/museo_sans_300"
+            android:gravity="center"
+            android:paddingStart="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_8"
+            android:paddingEnd="@dimen/dp_16"
+            android:paddingBottom="@dimen/dp_8"
+            android:text="@string/website"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintStart_toEndOf="@id/civ_app_logo"
+            app:layout_constraintTop_toBottomOf="@id/tv_game_desc" />
+
+        <TextView
+            android:id="@+id/tv_github_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:background="@drawable/light_curve_outline"
+            android:drawableStart="@drawable/ic_github_black"
+            android:drawablePadding="@dimen/dp_8"
+            android:fontFamily="@font/museo_sans_300"
+            android:gravity="center"
+            android:paddingStart="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_8"
+            android:paddingEnd="@dimen/dp_16"
+            android:paddingBottom="@dimen/dp_8"
+            android:text="@string/github"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintStart_toEndOf="@id/civ_app_logo"
+            app:layout_constraintTop_toBottomOf="@id/tv_website_link" />
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"

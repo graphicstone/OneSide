@@ -3,6 +3,7 @@ package com.example.oneside.ui.activities
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import android.widget.Adapter
@@ -26,12 +27,15 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
     private val preferenceKey = "PREFERENCE_FILE_KEY"
     private var sharedPreferences: SharedPreferences? = null
     private var editor: SharedPreferences.Editor? = null
+    private var clickSound: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_solution)
 
         supportActionBar?.hide()
+
+        clickSound = MediaPlayer.create(this, R.raw.click2)
 
         sharedPreferences = this.getSharedPreferences(preferenceKey, Context.MODE_PRIVATE)
         editor = sharedPreferences?.edit()
@@ -91,6 +95,7 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         if (view == civ_prev_btn) {
             if (position > 0) {
+                clickSound?.start()
                 val steps: String = "Moves: " + (--position).toString() + "/" + swapSite.size
                 tv_no_of_steps.text = steps
                 when (swapSite[position]) {
@@ -107,6 +112,7 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
                 Toast.makeText(this, "First position", Toast.LENGTH_SHORT).show()
         } else if (view == civ_next_btn) {
             if (position < swapSite.size) {
+                clickSound?.start()
                 val steps: String = "Moves: " + (position + 1).toString() + "/" + swapSite.size
                 tv_no_of_steps.text = steps
                 when (swapSite[position]) {
