@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ui.activities.SolutionActivity">
 
+    <ImageButton
+        android:id="@+id/ib_sound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/settings"
+        android:src="@drawable/ic_volume_up_black_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tv_no_of_steps"
         android:layout_width="wrap_content"

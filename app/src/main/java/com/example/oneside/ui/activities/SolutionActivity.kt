@@ -11,6 +11,8 @@ import android.widget.Toast
 import com.example.oneside.R
 import com.example.oneside.adapter.GridViewAdapter
 import kotlinx.android.synthetic.main.activity_solution.*
+import kotlinx.android.synthetic.main.activity_solution.ib_sound
+import kotlinx.android.synthetic.main.activity_solution.tv_no_of_steps
 
 class SolutionActivity : BaseActivity(), View.OnClickListener {
 
@@ -28,6 +30,7 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
     private var sharedPreferences: SharedPreferences? = null
     private var editor: SharedPreferences.Editor? = null
     private var clickSound: MediaPlayer? = null
+    private var soundBoolean: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +66,7 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
         civ_prev_btn.setOnClickListener(this)
         civ_next_btn.setOnClickListener(this)
         btn_play_again.setOnClickListener(this)
+        ib_sound.setOnClickListener(this)
     }
 
     private fun getRandomArray() {
@@ -95,7 +99,8 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         if (view == civ_prev_btn) {
             if (position > 0) {
-                clickSound?.start()
+                if(soundBoolean)
+                    clickSound?.start()
                 val steps: String = "Moves: " + (--position).toString() + "/" + swapSite.size
                 tv_no_of_steps.text = steps
                 when (swapSite[position]) {
@@ -112,7 +117,8 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
                 Toast.makeText(this, "First position", Toast.LENGTH_SHORT).show()
         } else if (view == civ_next_btn) {
             if (position < swapSite.size) {
-                clickSound?.start()
+                if(soundBoolean)
+                    clickSound?.start()
                 val steps: String = "Moves: " + (position + 1).toString() + "/" + swapSite.size
                 tv_no_of_steps.text = steps
                 when (swapSite[position]) {
@@ -132,6 +138,14 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
             val intent = Intent(this, LevelActivity::class.java)
             startActivity(intent)
             finish()
+        } else if(view == ib_sound) {
+            if(soundBoolean) {
+                ib_sound.background = getDrawable(R.drawable.ic_volume_off_black_24dp)
+                soundBoolean = false
+            } else {
+                ib_sound.background = getDrawable(R.drawable.ic_volume_up_black_24dp)
+                soundBoolean = true
+            }
         }
     }
 
@@ -147,22 +161,22 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
 
     private fun rotateGrid(swapSite: Int, swapDirection: Int) {
         if (swapDirection == 0) {
-            alteredNumberArray[0] = 0
-            alteredNumberArray[1] = swapSite
-            alteredNumberArray[2] = swapSite + 1
-            alteredNumberArray[3] = swapSite + 3
-            alteredNumberArray[4] = swapSite + 4
+            swapColorIndicesReference(swapDirection, swapSite)
             swapNumbers(swapSite, swapSite + 3)
             swapNumbers(swapSite + 4, swapSite + 1)
         } else {
-            alteredNumberArray[0] = 1
-            alteredNumberArray[1] = swapSite
-            alteredNumberArray[2] = swapSite + 1
-            alteredNumberArray[3] = swapSite + 3
-            alteredNumberArray[4] = swapSite + 4
+            swapColorIndicesReference(swapDirection, swapSite)
             swapNumbers(swapSite, swapSite + 1)
             swapNumbers(swapSite + 4, swapSite + 3)
         }
+    }
+
+    private fun swapColorIndicesReference(swapDirection: Int, swapSite: Int) {
+        alteredNumberArray[0] = swapDirection
+        alteredNumberArray[1] = swapSite
+        alteredNumberArray[2] = swapSite + 1
+        alteredNumberArray[3] = swapSite + 3
+        alteredNumberArray[4] = swapSite + 4
     }
 
     private fun swapNumbers(i: Int, j: Int) {

@@ -33,9 +33,9 @@ class AboutActivity : BaseActivity(), View.OnClickListener {
         developerNameList.add("Shubhesh Dwivedi")
         developerNameList.add("Vishal Verma")
 
-        developerDescList.add("Android Developer")
-        developerDescList.add("Web Developer")
-        developerDescList.add("Designer")
+        developerDescList.add("Poet with a keyboard")
+        developerDescList.add("World's okayest programmer")
+        developerDescList.add("Changing world, one pixel at a time")
     }
 
     override fun onClick(view: View?) {

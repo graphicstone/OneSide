@@ -20,4 +20,5 @@
     <color name="color_black">#000000</color>
     <color name="color_yellow">#FBBC05</color>
     <color name="color_grey">#f5f5ef</color>
+    <color name="colorBackgroundTint">#d6e4f1</color>
 </resources>
