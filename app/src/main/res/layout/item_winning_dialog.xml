@@ -43,6 +43,7 @@
             android:layout_marginTop="@dimen/dp_16"
             android:backgroundTint="#d6e4f1"
             android:fontFamily="@font/museo_sans_300"
+            android:letterSpacing="0"
             android:paddingStart="@dimen/dp_44"
             android:paddingTop="@dimen/dp_10"
             android:paddingEnd="@dimen/dp_44"
