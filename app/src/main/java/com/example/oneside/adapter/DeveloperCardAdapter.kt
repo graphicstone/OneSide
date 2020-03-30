@@ -36,6 +36,12 @@ class DeveloperCardAdapter(
 
         val name = developerNameList[position].split(" ")[0]
 
+        when (name) {
+            "Harishiv" -> holder.avatar.setImageResource(R.drawable.ic_hari_avatar)
+            "Shubhesh" -> holder.avatar.setImageResource(R.drawable.ic_shubhesh_avatar)
+            "Vishal" -> holder.avatar.setImageResource(R.drawable.ic_vishal_avatar)
+        }
+
         holder.linkedIn.setOnClickListener {
             val intent = Intent(mContext, WebViewActivity::class.java)
             intent.putExtra("URL", name + "LinkedIn")
@@ -53,6 +59,7 @@ class DeveloperCardAdapter(
 class DeveloperCardViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val name: TextView = view.tv_developer_name
     val desc: TextView = view.tv_developer_desc
+    val avatar: CircleImageView = view.civ_avatar
     val linkedIn: CircleImageView = view.civ_linkedin
     val github: CircleImageView = view.civ_github
 }

@@ -2,6 +2,7 @@ package com.example.oneside.ui.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -37,6 +38,21 @@ class WebViewActivity : BaseActivity() {
             "VishalGithub" -> wv_browser.loadUrl("https://github.com/frostcover")
             "VishalLinkedIn" -> wv_browser.loadUrl("https://www.linkedin.com/in/vishal-verma-94872012b/")
         }
+
+        wv_browser.setOnKeyListener(object : View.OnKeyListener {
+            override fun onKey(v: View, keyCode: Int, event: KeyEvent): Boolean {
+                if (event.action and KeyEvent.ACTION_DOWN == 0) {
+                    val webView = v as WebView
+                    when (keyCode) {
+                        KeyEvent.KEYCODE_BACK -> if (webView.canGoBack()) {
+                            webView.goBack()
+                            return true
+                        }
+                    }
+                }
+                return false
+            }
+        })
     }
 
     inner class WebClient : WebViewClient() {

@@ -4,19 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhiteBackground"
     tools:context=".ui.activities.GameActivity">
-
-    <ImageButton
-        android:id="@+id/ib_sound"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_16"
-        android:layout_marginTop="@dimen/dp_16"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/settings"
-        android:src="@drawable/ic_volume_up_black_24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/ib_settings"
@@ -26,7 +15,7 @@
         android:layout_marginEnd="@dimen/dp_16"
         android:background="@android:color/transparent"
         android:contentDescription="@string/settings"
-        android:src="@drawable/ic_settings_black_24dp"
+        android:src="@drawable/ic_pause_black_32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,7 +29,7 @@
         android:paddingEnd="@dimen/dp_16"
         android:paddingBottom="@dimen/dp_8"
         app:layout_constraintBottom_toTopOf="@id/cl_grid"
-        app:layout_constraintEnd_toStartOf="@id/tv_level"
+        app:layout_constraintEnd_toStartOf="@id/ll_level"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ib_settings">
 
@@ -65,31 +54,45 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_level"
+    <LinearLayout
+        android:id="@+id/ll_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/museo_sans_500"
-        android:minWidth="@dimen/dp_120"
+        android:orientation="horizontal"
         android:paddingStart="@dimen/dp_16"
         android:paddingTop="@dimen/dp_8"
         android:paddingEnd="@dimen/dp_16"
         android:paddingBottom="@dimen/dp_8"
-        android:text="@string/level"
-        android:textAlignment="center"
-        android:textColor="@color/primary_text"
-        android:textSize="@dimen/sp_20"
-        app:layout_constraintBottom_toBottomOf="@id/ll_moves"
+        app:layout_constraintBottom_toTopOf="@id/cl_grid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ll_moves"
-        app:layout_constraintTop_toTopOf="@id/ll_moves" />
+        app:layout_constraintTop_toBottomOf="@id/ib_settings">
+
+        <TextView
+            android:id="@+id/tv_level_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/museo_sans_500"
+            android:text="@string/level_heading"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/sp_20" />
+
+        <TextView
+            android:id="@+id/tv_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:fontFamily="@font/museo_sans_500"
+            android:minWidth="@dimen/dp_24"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/sp_20" />
+
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_24"
-        android:layout_marginBottom="@dimen/dp_24"
         app:layout_constraintBottom_toTopOf="@id/ll_row_swap"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -220,6 +223,8 @@
                 android:id="@+id/gv_matrix_layout"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
                 android:numColumns="3"
                 android:stretchMode="columnWidth">
 
@@ -292,19 +297,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_24"
         android:layout_marginEnd="@dimen/dp_24"
-        android:layout_marginBottom="@dimen/dp_32"
+        android:layout_marginBottom="@dimen/dp_16"
         android:backgroundTint="@color/colorBackgroundTint"
         android:fontFamily="@font/museo_sans_300"
         android:gravity="center"
         android:letterSpacing="0"
-        android:paddingStart="@dimen/dp_30"
-        android:paddingTop="@dimen/dp_10"
-        android:paddingEnd="@dimen/dp_30"
-        android:paddingBottom="@dimen/dp_10"
+        android:paddingStart="@dimen/dp_32"
+        android:paddingTop="@dimen/dp_12"
+        android:paddingEnd="@dimen/dp_32"
+        android:paddingBottom="@dimen/dp_12"
         android:text="@string/show_solution"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/sp_14"
+        android:textSize="@dimen/sp_16"
         app:cornerRadius="@dimen/dp_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

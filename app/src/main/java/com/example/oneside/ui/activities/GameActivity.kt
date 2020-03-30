@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -39,8 +38,6 @@ class GameActivity : BaseActivity(), View.OnClickListener {
     private val gson = Gson()
     private var adapter: Adapter? = null
     private var doubleBackToExitPressedOnce = false
-    private var clickSound: MediaPlayer? = null
-    private var soundBoolean: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,8 +49,6 @@ class GameActivity : BaseActivity(), View.OnClickListener {
 
         if (supportActionBar != null)
             supportActionBar?.hide()
-
-        clickSound = MediaPlayer.create(this, R.raw.click3)
 
         when (sharedPreferences?.getString("Level", "DEFAULT_STRING")) {
             "Easy" -> randomNumber = (0..1).random()
@@ -116,7 +111,6 @@ class GameActivity : BaseActivity(), View.OnClickListener {
         civ_8_btn.setOnClickListener(this)
         btn_solution.setOnClickListener(this)
         ib_settings.setOnClickListener(this)
-        ib_sound.setOnClickListener(this)
 
         val randomArrayJSON: String = gson.toJson(randomArray)
         val swapSiteJSON: String = gson.toJson(swapSiteArray)
@@ -286,15 +280,6 @@ class GameActivity : BaseActivity(), View.OnClickListener {
                 val intent = Intent(this, ResumeActivity::class.java)
                 startActivity(intent)
             }
-            ib_sound -> {
-                if(soundBoolean) {
-                    ib_sound.background = getDrawable(R.drawable.ic_volume_off_black_24dp)
-                    soundBoolean = false
-                } else {
-                    ib_sound.background = getDrawable(R.drawable.ic_volume_up_black_24dp)
-                    soundBoolean = true
-                }
-            }
         }
     }
 
@@ -319,7 +304,7 @@ class GameActivity : BaseActivity(), View.OnClickListener {
                         finish()
                     }
                     dialog.show()
-                    dialog.window?.setLayout(600, 700)
+                    dialog.window?.setLayout(700, 650)
                 }
             })
     }
@@ -333,8 +318,6 @@ class GameActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun updateMovesCount() {
-        if(soundBoolean)
-            clickSound?.start()
         movesCount++
         tv_no_of_steps.text = movesCount.toString()
         editor?.putInt("Moves", movesCount)

@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhiteBackground"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.FirstScreenFragment">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/screen_3"
-        android:scaleType="fitCenter"
+        android:layout_width="@dimen/dp_400"
+        android:layout_height="@dimen/dp_400"
         android:contentDescription="@string/grid_info"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/screen_3"
+        app:layout_constraintBottom_toTopOf="@id/tv_info"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tv_info"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/dp_80"
         android:background="@color/colorWhiteBackground"
-        android:layout_alignParentBottom="true"
-        android:padding="@dimen/dp_16"
         android:fontFamily="@font/museo_sans_300"
+        android:lineSpacingExtra="2dp"
+        android:padding="@dimen/dp_16"
         android:text="@string/third_screen_text"
         android:textAlignment="center"
-        android:textSize="@dimen/sp_16"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/sp_20"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
