@@ -1,11 +1,13 @@
 package com.example.oneside.ui.fragments
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.oneside.R
+
 
 class FirstScreenFragment : Fragment() {
 
@@ -14,6 +16,7 @@ class FirstScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+//        val icon = BitmapFactory.decodeResource(resources, R.drawable.screen_1);
         return inflater.inflate(R.layout.fragment_first_screen, container, false)
     }
 }

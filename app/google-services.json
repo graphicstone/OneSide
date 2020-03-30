@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "453339477964",
+    "firebase_url": "https://project-oneside.firebaseio.com",
+    "project_id": "project-oneside",
+    "storage_bucket": "project-oneside.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453339477964:android:e6aae89c9024de52d70f69",
+        "android_client_info": {
+          "package_name": "com.example.oneside"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453339477964-a8v0ap67seu529rskluqjcsmstcraccq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXq2A2yWKpJ5NlZXEDSkE3ex_6VcD_nyw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453339477964-a8v0ap67seu529rskluqjcsmstcraccq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
