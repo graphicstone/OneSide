@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.oneside">
+    package="com.nullbyte.oneside">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,27 +12,27 @@
         android:roundIcon="@mipmap/ic_round_app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activities.WebViewActivity"
+        <activity android:name="com.nullbyte.oneside.ui.activities.WebViewActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.activities.AboutActivity"
+            android:name="com.nullbyte.oneside.ui.activities.AboutActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.activities.HowToPlayActivity"
+            android:name="com.nullbyte.oneside.ui.activities.HowToPlayActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.activities.ResumeActivity"
+            android:name="com.nullbyte.oneside.ui.activities.ResumeActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.activities.LandingActivity"
+            android:name="com.nullbyte.oneside.ui.activities.LandingActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.activities.SplashActivity"
+            android:name="com.nullbyte.oneside.ui.activities.SplashActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
@@ -43,15 +43,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activities.LevelActivity"
+            android:name="com.nullbyte.oneside.ui.activities.LevelActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.activities.SolutionActivity"
+            android:name="com.nullbyte.oneside.ui.activities.SolutionActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.activities.GameActivity"
+            android:name="com.nullbyte.oneside.ui.activities.GameActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
     </application>
