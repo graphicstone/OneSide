@@ -42,5 +42,6 @@
     <string name="github">Github</string>
     <string name="level_heading">Level:</string>
     <string name="restart">Restart</string>
+    <string name="play_again">Play again</string>
 
 </resources>

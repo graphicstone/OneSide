@@ -48,7 +48,7 @@
             android:paddingTop="@dimen/dp_12"
             android:paddingEnd="@dimen/dp_32"
             android:paddingBottom="@dimen/dp_12"
-            android:text="@string/play_game"
+            android:text="@string/play_again"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/sp_16"

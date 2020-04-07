@@ -7,6 +7,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Adapter
 import androidx.constraintlayout.widget.ConstraintSet
 import com.nullbyte.oneside.R
@@ -304,7 +305,7 @@ class GameActivity : BaseActivity(), View.OnClickListener {
                         finish()
                     }
                     dialog.show()
-                    dialog.window?.setLayout(700, 650)
+                    dialog.window?.setLayout(700, ViewGroup.LayoutParams.WRAP_CONTENT)
                 }
             })
     }
