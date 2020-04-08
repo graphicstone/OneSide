@@ -32,7 +32,7 @@
     <string name="third_screen_text">Blue colour represents a row swap</string>
     <string name="fourth_screen_text">Pink colour represents a column swap</string>
     <string name="grid_info">Grid info</string>
-    <string name="game_desc">OneSide is an open-source mathematical puzzle game. You can also play the same game on our website.</string>
+    <string name="game_desc">OneSide is a unique mathematical puzzle game. You can also play the same on our website.</string>
     <string name="app_info">App Info</string>
     <string name="home_screen">Home Screen</string>
     <string name="play_game">Play Game</string>
@@ -43,5 +43,6 @@
     <string name="level_heading">Level:</string>
     <string name="restart">Restart</string>
     <string name="play_again">Play again</string>
+    <string name="back_to_home">Back to home</string>
 
 </resources>

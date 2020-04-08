@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/museo_sans_300"
             android:paddingTop="@dimen/dp_12"
-            android:text="@string/home_screen"
+            android:text="@string/back_to_home"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/sp_16"

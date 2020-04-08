@@ -72,20 +72,13 @@
             app:layout_constraintStart_toEndOf="@id/civ_app_logo"
             app:layout_constraintTop_toBottomOf="@id/tv_game_desc" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/tv_website_link"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/dp_16"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_8"
             android:backgroundTint="@color/colorBackgroundTint"
             android:fontFamily="@font/museo_sans_300"
             android:gravity="center"
@@ -104,38 +97,13 @@
             app:strokeColor="@color/colorPrimary"
             app:strokeWidth="0.5dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/tv_github_link"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_16"
-            android:backgroundTint="@color/colorBackgroundTint"
-            android:fontFamily="@font/museo_sans_300"
-            android:gravity="center"
-            android:letterSpacing="0"
-            android:paddingStart="@dimen/dp_32"
-            android:paddingTop="@dimen/dp_12"
-            android:paddingEnd="@dimen/dp_32"
-            android:paddingBottom="@dimen/dp_12"
-            android:text="@string/github"
-            android:textAllCaps="false"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/sp_16"
-            app:cornerRadius="@dimen/dp_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tv_website_link"
-            app:layout_constraintTop_toBottomOf="@id/tv_version"
-            app:strokeColor="@color/colorPrimary"
-            app:strokeWidth="0.5dp" />
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_24"
-        android:layout_marginTop="@dimen/dp_32"
+        android:layout_marginTop="@dimen/dp_16"
         android:layout_marginEnd="@dimen/dp_24"
         android:fontFamily="@font/museo_sans_500"
         android:text="@string/contributors"

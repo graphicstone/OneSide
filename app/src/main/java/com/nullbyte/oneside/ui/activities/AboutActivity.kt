@@ -24,7 +24,6 @@ class AboutActivity : BaseActivity(), View.OnClickListener {
         rv_developer_info.layoutManager = LinearLayoutManager(this)
         rv_developer_info.adapter = DeveloperCardAdapter(developerNameList, developerDescList)
 
-        tv_github_link.setOnClickListener(this)
         tv_website_link.setOnClickListener(this)
     }
 
@@ -39,11 +38,7 @@ class AboutActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun onClick(view: View?) {
-        if(view == tv_github_link) {
-            val intent = Intent(this, WebViewActivity::class.java)
-            intent.putExtra("URL", "Github")
-            startActivity(intent)
-        } else {
+        if(view == tv_website_link) {
             val intent = Intent(this, WebViewActivity::class.java)
             intent.putExtra("URL", "Website")
             startActivity(intent)
