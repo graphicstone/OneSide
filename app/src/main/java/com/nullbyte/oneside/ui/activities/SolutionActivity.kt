@@ -6,9 +6,9 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Adapter
-import android.widget.Toast
 import com.nullbyte.oneside.R
 import com.nullbyte.oneside.adapter.GridViewAdapter
+import com.nullbyte.oneside.utilities.VariableAndMethodUtility
 import kotlinx.android.synthetic.main.activity_solution.*
 
 class SolutionActivity : BaseActivity(), View.OnClickListener {
@@ -104,7 +104,7 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
                         showSolution(4)
                 }
             } else
-                Toast.makeText(this, "First position", Toast.LENGTH_SHORT).show()
+                VariableAndMethodUtility.showSnackbar(this, getString(R.string.first_position))
         } else if (view == civ_next_btn) {
             if (position < swapSite.size) {
                 val steps: String = "Moves: " + (position + 1).toString() + "/" + swapSite.size
@@ -121,7 +121,7 @@ class SolutionActivity : BaseActivity(), View.OnClickListener {
                 }
                 position++
             } else
-                Toast.makeText(this, "Last position", Toast.LENGTH_SHORT).show()
+                VariableAndMethodUtility.showSnackbar(this, getString(R.string.last_position))
         } else if (view == btn_play_again) {
             val intent = Intent(this, LevelActivity::class.java)
             startActivity(intent)

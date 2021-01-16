@@ -3,7 +3,9 @@ package com.nullbyte.oneside.ui.activities
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.View
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.nullbyte.oneside.R
 import com.nullbyte.oneside.utilities.VariableAndMethodUtility
 import kotlinx.android.synthetic.main.activity_landing.*
@@ -11,12 +13,15 @@ import kotlinx.android.synthetic.main.activity_landing.*
 class LandingActivity : BaseActivity(), View.OnClickListener {
 
     private var doubleBackToExitPressedOnce = false
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing)
 
         supportActionBar?.hide()
+
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this)
 
         btn_play_again.setOnClickListener(this)
         btn_how_to_play.setOnClickListener(this)
@@ -48,6 +53,6 @@ class LandingActivity : BaseActivity(), View.OnClickListener {
         }
         this.doubleBackToExitPressedOnce = true
         VariableAndMethodUtility.showSnackbar(this, "Press back again to exit.")
-        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
+        Handler(Looper.myLooper() ?: return).postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 }

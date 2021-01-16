@@ -27,7 +27,7 @@
     <string name="user_description">What the hell did you do?</string>
     <string name="shubhesh_dwivedi">Shubhesh Dwivedi</string>
     <string name="vishal_verma">Vishal Verma</string>
-    <string name="first_screen_text">Hey there, above you see a matrix and some swapping buttons. Your goal is to match the number in a cell to its respective superscript.</string>
+    <string name="first_screen_text">Hey there, above you see a matrix and some swapping buttons. Your goal is to match the number in a cell to its respective smaller grid number.</string>
     <string name="second_screen_text">You can use row swap and column to achieve your goal. Swapping only affects two rows and two columns corresponding to the swapping button.</string>
     <string name="third_screen_text">Blue colour represents a row swap</string>
     <string name="fourth_screen_text">Pink colour represents a column swap</string>
@@ -44,5 +44,7 @@
     <string name="restart">Restart</string>
     <string name="play_again">Play again</string>
     <string name="back_to_home">Back to home</string>
+    <string name="first_position">First Position</string>
+    <string name="last_position">Last Position</string>
 
 </resources>

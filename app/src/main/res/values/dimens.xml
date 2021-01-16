@@ -40,4 +40,5 @@
     <dimen name="dp_250">250dp</dimen>
     <dimen name="dp_300">300dp</dimen>
     <dimen name="dp_400">400dp</dimen>
+    <dimen name="dp_28">28dp</dimen>
 </resources>

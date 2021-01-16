@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.nullbyte.oneside.BuildConfig
 import com.nullbyte.oneside.R
 import com.nullbyte.oneside.adapter.DeveloperCardAdapter
 import kotlinx.android.synthetic.main.activity_about.*
@@ -21,6 +22,8 @@ class AboutActivity : BaseActivity(), View.OnClickListener {
 
         initList()
 
+        val version = "Version "+BuildConfig.VERSION_NAME
+        tv_version.text = version
         rv_developer_info.layoutManager = LinearLayoutManager(this)
         rv_developer_info.adapter = DeveloperCardAdapter(developerNameList, developerDescList)
 

@@ -6,15 +6,17 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Adapter
 import androidx.constraintlayout.widget.ConstraintSet
+import com.google.gson.Gson
 import com.nullbyte.oneside.R
 import com.nullbyte.oneside.adapter.GridViewAdapter
+import com.nullbyte.oneside.callback.OnSwipeTouchListener
 import com.nullbyte.oneside.callback.ViewCallback
 import com.nullbyte.oneside.utilities.VariableAndMethodUtility
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.item_solution_dialog.view.*
 import kotlinx.android.synthetic.main.item_winning_dialog.view.*
@@ -52,9 +54,9 @@ class GameActivity : BaseActivity(), View.OnClickListener {
             supportActionBar?.hide()
 
         when (sharedPreferences?.getString("Level", "DEFAULT_STRING")) {
-            "Easy" -> randomNumber = (0..1).random()
-            "Medium" -> randomNumber = (2..4).random()
-            "Hard" -> randomNumber = (5..7).random()
+            "Easy" -> randomNumber = 0
+            "Medium" -> randomNumber = (1..2).random()
+            "Hard" -> randomNumber = (3..5).random()
             "DEFAULT_STRING" -> randomNumber = (0..1).random()
         }
 
@@ -65,6 +67,8 @@ class GameActivity : BaseActivity(), View.OnClickListener {
             getDirectionArray()
             getMovesCount()
         } else {
+            if(randomNumber == -1)
+                randomNumber = 0
             movesCount = 0
             tv_no_of_steps.text = movesCount.toString()
             for (i in 1..9)
@@ -72,8 +76,8 @@ class GameActivity : BaseActivity(), View.OnClickListener {
             for (i in 1..9)
                 fixedArray.add(i)
             for (i in 0..randomNumber) {
-                for (j in 0..2) {
-                    for (k in 0..2) {
+                for (j in 0..1) {
+                    for (k in 0..1) {
                         var swapSite = (0..3).random()
                         val swapDirection = (0..1).random()
                         if (swapSite == 2 || swapSite == 3)
@@ -198,6 +202,14 @@ class GameActivity : BaseActivity(), View.OnClickListener {
         val fixedArrayJSON: String = gson.toJson(fixedArray)
         editor?.putString("FixedArray", fixedArrayJSON)
         editor?.apply()
+    }
+
+    private fun rotateQuadrant(swapSite: Int, swapDirection: Int, array: Boolean) {
+        updateMovesCount()
+        rotateGrid(swapSite, swapDirection, true)
+        (adapter as GridViewAdapter).notifyDataSetChanged()
+        if (checkWinningState())
+            completeGame()
     }
 
     override fun onClick(view: View?) {
@@ -334,7 +346,7 @@ class GameActivity : BaseActivity(), View.OnClickListener {
             }
             this.doubleBackToExitPressedOnce = true
             VariableAndMethodUtility.showSnackbar(this, "Press back again to exit.")
-            Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
+            Handler(Looper.myLooper() ?: return).postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
         } else
             super.onBackPressed()
     }
